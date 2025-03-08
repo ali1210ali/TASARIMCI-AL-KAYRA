@@ -513,31 +513,6 @@
         </div>
     </div>
 
-    <!-- Giriş ve Kayıt Olma Bölümü -->
-    <div class="container" id="girisKayit">
-        <h2>Giriş / Kayıt Ol</h2>
-        <div id="girisFormu" style="display: block;">
-            <h3>Giriş Yap</h3>
-            <form onsubmit="return handleLogin(event)">
-                <input type="email" placeholder="E-posta" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <input type="password" placeholder="Şifre" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <button type="submit" style="background-color: #003cff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Giriş Yap</button>
-            </form>
-            <p style="margin-top: 10px;">Hesabınız yok mu? <a href="#" onclick="toggleForms()">Kayıt Ol</a></p>
-        </div>
-
-        <div id="kayitFormu" style="display: none;">
-            <h3>Kayıt Ol</h3>
-            <form onsubmit="return handleRegister(event)">
-                <input type="text" placeholder="Adınız" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <input type="email" placeholder="E-posta" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <input type="password" placeholder="Şifre" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <button type="submit" style="background-color: #ff69b4; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Kayıt Ol</button>
-            </form>
-            <p style="margin-top: 10px;">Zaten hesabınız var mı? <a href="#" onclick="toggleForms()">Giriş Yap</a></p>
-        </div>
-    </div>
-
     <!-- Chat Asistan -->
     <button class="chat-toggle-button" onclick="toggleChat()">💬</button>
     <div class="chat-box" id="chatBox">
