@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Etiçartet</title>
+    <title>E-TİCARET</title>
     <style>
         /* Genel Stil */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
+            background-color: #121212;
             color: #fff;
             margin: 0;
             padding: 0;
@@ -17,20 +17,20 @@
             min-height: 100vh;
         }
         header {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            background: linear-gradient(135deg, #1e90ff, #0077b6);
             color: white;
             text-align: center;
             padding: 20px 0;
-            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
             position: relative;
             animation: headerAnimation 5s infinite alternate;
         }
         @keyframes headerAnimation {
-            0% { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
-            50% { background: linear-gradient(135deg, #ff4b2b, #ff416c); }
-            100% { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+            0% { background: linear-gradient(135deg, #1e90ff, #0077b6); }
+            50% { background: linear-gradient(135deg, #0077b6, #1e90ff); }
+            100% { background: linear-gradient(135deg, #1e90ff, #0077b6); }
         }
-        .cart-icon {
+        .cart-icon, .user-icon {
             position: absolute;
             right: 20px;
             top: 20px;
@@ -38,7 +38,8 @@
             cursor: pointer;
             transition: transform 0.3s;
         }
-        .cart-icon:hover {
+        .cart-icon { right: 60px; }
+        .user-icon:hover, .cart-icon:hover {
             transform: scale(1.2);
         }
         .container {
@@ -52,12 +53,27 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+        .home-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #1e90ff, #0077b6);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+        }
+        .home-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.6);
+        }
         .product {
             flex: 1 1 calc(25% - 40px);
             max-width: 220px;
             margin: 10px;
             padding: 15px;
-            background-color: #2c2c2c;
+            background-color: #1e1e1e;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -65,15 +81,21 @@
             align-items: center;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .product:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(255, 75, 43, 0.6);
-            background-color: #3a3a3a;
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.6);
+            background-color: #2a2a2a;
         }
         .product img {
             width: 100%;
-            height: 150px;
+            height: auto;
             object-fit: cover;
             margin-bottom: 10px;
             border-radius: 8px;
@@ -85,7 +107,7 @@
         .product h3 {
             margin: 0 0 10px;
             font-size: 18px;
-            color: #ff4b2b;
+            color: #1e90ff;
         }
         .product p {
             margin: 0;
@@ -94,32 +116,36 @@
         }
         .product .price {
             font-weight: bold;
-            color: #ff4b2b;
+            color: #1e90ff;
             margin-top: 10px;
             font-size: 18px;
+        }
+        .product .code {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
         }
         .buy-button {
             margin-top: 10px;
             padding: 10px 20px;
             font-size: 14px;
             cursor: pointer;
-            background-color: #ff4b2b;
+            background: linear-gradient(135deg, #1e90ff, #0077b6);
             color: white;
             border: none;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: transform 0.3s;
         }
         .buy-button:hover {
-            background-color: #ff416c;
             transform: scale(1.1);
         }
-        .cart-modal {
+        .cart-modal, .login-modal {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #2c2c2c;
+            background-color: #1e1e1e;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             border-radius: 12px;
@@ -132,9 +158,9 @@
             from { opacity: 0; transform: translate(-50%, -60%); }
             to { opacity: 1; transform: translate(-50%, -50%); }
         }
-        .cart-modal h2 {
+        .cart-modal h2, .login-modal h2 {
             margin-top: 0;
-            color: #ff4b2b;
+            color: #1e90ff;
         }
         .cart-modal ul {
             list-style-type: none;
@@ -146,7 +172,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            background-color: #3a3a3a;
+            background-color: #2a2a2a;
             border-radius: 8px;
             transition: transform 0.3s;
         }
@@ -154,25 +180,25 @@
             transform: translateX(10px);
         }
         .cart-modal li button {
-            background-color: #ff4b2b;
+            background: linear-gradient(135deg, #1e90ff, #0077b6);
             color: white;
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: transform 0.3s;
         }
         .cart-modal li button:hover {
-            background-color: #ff416c;
+            transform: scale(1.1);
         }
-        .close-cart {
+        .close-cart, .close-login {
             cursor: pointer;
-            color: #ff4b2b;
+            color: #1e90ff;
             font-weight: bold;
             float: right;
             transition: transform 0.3s;
         }
-        .close-cart:hover {
+        .close-cart:hover, .close-login:hover {
             transform: scale(1.2);
         }
         .checkout-button {
@@ -180,33 +206,42 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #ff4b2b;
+            background: linear-gradient(135deg, #1e90ff, #0077b6);
             color: white;
             border: none;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: transform 0.3s;
         }
         .checkout-button:hover {
-            background-color: #ff416c;
             transform: scale(1.1);
         }
-        @media (max-width: 768px) {
-            .product {
-                flex: 1 1 calc(50% - 40px);
-                max-width: 200px;
-            }
-            .product img {
-                height: 120px;
-            }
+        .checkout-button:disabled {
+            background: #888;
+            cursor: not-allowed;
         }
-        @media (max-width: 480px) {
-            .product {
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
-            .product img {
-                height: 150px;
-            }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1e90ff, #0077b6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        .product .logo {
+            /* Bu stil bloğu kaldırılabilir */
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: auto;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -214,55 +249,12 @@
     <header>
         <h1>Etiçartet</h1>
         <span class="cart-icon" onclick="toggleCart()">🛒</span>
+        <span class="user-icon" onclick="toggleLogin()">👤</span>
     </header>
     <div class="container">
         <button onclick="window.location.href='index.html'" class="home-button">Ana Sayfa</button>
         <h2>Ürünlerimiz</h2>
-        <div class="product">
-            <img src="website-1.jpg" alt="Web Site">
-            <div>
-                <h3>WEB SİTE</h3>
-                <p>Ürün açıklaması burada yer alacak.</p>
-                <p class="price">₺1000</p>
-                <button class="buy-button" onclick="addToCart('Web Site', 1000)">Sepete Ekle</button>
-            </div>
-        </div>
-        <div class="product">
-            <img src="yazılım yapılır.png" alt="Yazılım">
-            <div>
-                <h3>YAZILIM</h3>
-                <p>YAZILIM İÇİN İLETİŞİME GEÇİN.</p>
-                <p class="price">₺LÜTFEN MESAJ ATINIZ</p>
-                <button class="buy-button" onclick="addToCart('Yazılım', 0)">Sepete Ekle</button>
-            </div>
-        </div>
-        <div class="product">
-            <img src="1.webp" alt="Grafik Tasarım">
-            <div>
-                <h3>GRAFİK TASARIM</h3>
-                <p>HERTÜRLÜ GRAFİK Yapılır.</p>
-                <p class="price">₺MESAJ ATINIZ</p>
-                <button class="buy-button" onclick="addToCart('Grafik Tasarım', 0)">Sepete Ekle</button>
-            </div>
-        </div>
-        <div class="product">
-            <img src="1.png" alt="Logo Tasarım">
-            <div>
-                <h3>LOGO TASARIM</h3>
-                <p>HERTÜRLÜ LOGO YAPILIR.</p>
-                <p class="price">₺250</p>
-                <button class="buy-button" onclick="addToCart('Logo Tasarım', 250)">Sepete Ekle</button>
-            </div>
-        </div>
-        <div class="product">
-            <img src="slide-2.webp" alt="Animasyonlu Video">
-            <div>
-                <h3>ANİMASYONLU VİDEO</h3>
-                <p>Ürün açıklaması burada yer alacak.</p>
-                <p class="price">₺350</p>
-                <button class="buy-button" onclick="addToCart('Animasyonlu Video', 350)">Sepete Ekle</button>
-            </div>
-        </div>
+        <div id="products" class="products"></div>
     </div>
 
     <!-- Sepet Modal -->
@@ -271,21 +263,75 @@
         <h2>Sepetiniz</h2>
         <ul id="cartItems"></ul>
         <p id="totalPrice">Toplam: ₺0</p>
-        <button class="checkout-button" onclick="checkout()">Satın Al</button>
+        <button class="checkout-button" id="checkoutButton" onclick="checkout()" disabled>Satın Al</button>
     </div>
+
+    <!-- Giriş Modal -->
+    <div class="login-modal" id="loginModal">
+        <span class="close-login" onclick="closeModal('loginModal')">X</span>
+        <h2>Giriş Yap</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="E-posta" required>
+            <input type="password" id="loginPassword" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+        <p>Hesabınız yok mu? <a href="#" onclick="toggleRegister()">Kayıt Ol</a></p>
+    </div>
+
+    <!-- Kayıt Modal -->
+    <div class="login-modal" id="registerModal" style="display: none;">
+        <span class="close-login" onclick="closeModal('registerModal')">X</span>
+        <h2>Kayıt Ol</h2>
+        <form id="registerForm">
+            <input type="text" id="registerName" placeholder="Adınız" required>
+            <input type="email" id="registerEmail" placeholder="E-posta" required>
+            <input type="password" id="registerPassword" placeholder="Şifre" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <p>Zaten hesabınız var mı? <a href="#" onclick="toggleLogin()">Giriş Yap</a></p>
+    </div>
+
+    <!-- Bildirim -->
+    <div class="notification" id="notification" style="display: none;">Ürün sepete eklendi!</div>
 
     <script>
         const cart = [];
+        let isLoggedIn = false; // Kullanıcı giriş durumu
+        const products = [
+            { id: 1, code: "PRD-001", name: "WEB SİTE", price: 1000, image: "website-1.jpg", description: "Ürün açıklaması burada yer alacak." },
+            { id: 2, code: "PRD-002", name: "YAZILIM", price: 0, image: "yazılım yapılır.png", description: "YAZILIM İÇİN İLETİŞİME GEÇİN." },
+            { id: 3, code: "PRD-003", name: "GRAFİK TASARIM", price: 0, image: "1.webp", description: "HERTÜRLÜ GRAFİK Yapılır." },
+            { id: 4, code: "PRD-004", name: "LOGO TASARIM", price: 250, image: "1.png", description: "HERTÜRLÜ LOGO YAPILIR." },
+            { id: 5, code: "PRD-005", name: "ANİMASYONLU VİDEO", price: 350, image: "slide-2.webp", description: "Ürün açıklaması burada yer alacak." },
+        ];
 
-        function addToCart(productName, productPrice) {
-            const existingProduct = cart.find(item => item.name === productName);
+        function renderProducts() {
+            const productsContainer = document.getElementById('products');
+            productsContainer.innerHTML = products.map(product => `
+                <div class="product" data-id="${product.id}">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div>
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="price">₺${product.price}</p>
+                        <p class="code">Ürün Kodu: ${product.code}</p>
+                        <button class="buy-button" onclick="addToCart('${product.name}', ${product.price}, '${product.code}')">Sepete Ekle</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderProducts();
+
+        function addToCart(productName, productPrice, productCode) {
+            const existingProduct = cart.find(item => item.code === productCode);
             if (existingProduct) {
                 existingProduct.quantity += 1;
             } else {
-                cart.push({ name: productName, price: productPrice, quantity: 1 });
+                cart.push({ code: productCode, name: productName, price: productPrice, quantity: 1 });
             }
             updateCart();
-            alert(`${productName} sepete eklendi!`);
+            showNotification(`${productName} sepete eklendi!`);
         }
 
         function toggleCart() {
@@ -294,16 +340,36 @@
             updateCart();
         }
 
+        function toggleLogin() {
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+            loginModal.style.display = 'block';
+            registerModal.style.display = 'none';
+        }
+
+        function toggleRegister() {
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+            loginModal.style.display = 'none';
+            registerModal.style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+        }
+
         function updateCart() {
             const cartItems = document.getElementById('cartItems');
             const totalPrice = document.getElementById('totalPrice');
+            const checkoutButton = document.getElementById('checkoutButton');
             cartItems.innerHTML = '';
             let total = 0;
 
             cart.forEach((item, index) => {
                 const li = document.createElement('li');
                 li.innerHTML = `
-                    ${item.name} - ₺${item.price} x ${item.quantity}
+                    ${item.name} (${item.code}) - ₺${item.price} x ${item.quantity}
                     <button onclick="removeFromCart(${index})">Kaldır</button>
                 `;
                 cartItems.appendChild(li);
@@ -311,6 +377,9 @@
             });
 
             totalPrice.textContent = `Toplam: ₺${total}`;
+
+            // Satın alma butonunu giriş durumuna göre aktif/pasif yap
+            checkoutButton.disabled = !isLoggedIn;
         }
 
         function removeFromCart(index) {
@@ -319,10 +388,54 @@
         }
 
         function checkout() {
-            const message = cart.map(item => `${item.name} - ₺${item.price} x ${item.quantity}`).join(', ');
-            const whatsappLink = `https://wa.me/5054315002?text=Ürün siparişi vermek istiyorum: ${encodeURIComponent(message)}`;
+            if (!isLoggedIn) {
+                alert("Lütfen önce giriş yapın!");
+                return;
+            }
+            const message = cart.map(item => `${item.name} (${item.code}) - ₺${item.price} x ${item.quantity}`).join(', ');
+            const whatsappLink = `https://wa.me/905555555555?text=Merhaba, şu ürünleri satın almak istiyorum: ${encodeURIComponent(message)}`;
             window.open(whatsappLink, '_blank');
         }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Giriş ve kayıt işlemleri
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            // Basit giriş kontrolü
+            if (email && password) {
+                isLoggedIn = true;
+                alert("Giriş başarılı!");
+                closeModal('loginModal');
+                updateCart(); // Sepeti güncelle
+            } else {
+                alert("Lütfen tüm alanları doldurun!");
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            // Basit kayıt kontrolü
+            if (name && email && password) {
+                alert("Kayıt başarılı! Lütfen giriş yapın.");
+                closeModal('registerModal');
+                toggleLogin();
+            } else {
+                alert("Lütfen tüm alanları doldurun!");
+            }
+        });
     </script>
 </body>
 </html>

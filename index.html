@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tasarımcı Ali Dayı, yazılım çözümleri ve profesyonel web siteleri geliştirir.">
     <title>Tasarımcı Ali Dayı</title>
     <style>
         /* Genel Stil */
@@ -10,8 +11,8 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 10px;
-            background-color: black;
-            color: white;
+            background-color: white;
+            color: black;
             line-height: 1.6;
         }
 
@@ -42,24 +43,27 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: black;
-            padding: 10px 0;
+            background-color: white;
+            padding: 5px 0; /* Menü butonlarını küçültmek için padding azaltıldı */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         nav a {
-            color: white;
-            padding: 14px 20px;
+            color: black;
+            padding: 8px 15px; /* Menü butonlarını küçültmek için padding azaltıldı */
             text-decoration: none;
             text-align: center;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
             font-weight: bold;
+            font-size: 14px; /* Yazı boyutu küçültüldü */
+            border-radius: 5px;
         }
 
         nav a:hover {
             background-color: rgb(255, 0, 0);
             color: white;
-            border-radius: 5px;
+            transform: translateY(-3px); /* Buton hover'da yukarı hareket */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .container {
@@ -120,27 +124,30 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Genel Buton Stilleri */
         button {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #ff69b4;
+            background-color: #007bff; /* Mavi arka plan rengi */
             color: white;
             border: none;
             border-radius: 5px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* LED benzeri gölge efekti */
         }
 
         button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7); /* Hover'da daha belirgin gölge */
+            background-color: #0056b3; /* Hover'da daha koyu mavi */
         }
 
         footer {
             text-align: center;
             padding: 10px;
-            background-color: rgba(255, 105, 180, 0.8);
+            background-color: rgba(255, 105, 180, 1);
             color: white;
             position: fixed;
             width: 100%;
@@ -155,7 +162,7 @@
             transform: translate(50%, 50%);
             width: 300px;
             max-height: 400px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: green;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
@@ -173,7 +180,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #ff69b4;
+            background-color: #007bff; /* Mavi arka plan rengi */
             color: white;
             border: none;
             border-radius: 50%;
@@ -188,6 +195,7 @@
         .chat-toggle-button:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background-color: #0056b3; /* Hover'da daha koyu mavi */
         }
 
         .chat-header {
@@ -253,6 +261,9 @@
         }
 
         @media (max-width: 768px) {
+            nav a {
+                font-size: 12px; /* Mobilde daha küçük yazı boyutu */
+            }
             .service {
                 flex: 1 1 calc(100% - 20px);
                 padding: 15px;
@@ -274,10 +285,130 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Ek Efektler */
+        .service h3 {
+            transition: color 0.3s;
+        }
+
+        .service:hover h3 {
+            color: #ff69b4; /* Hover'da başlık rengi değişir */
+        }
+
+        .service p {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service:hover p {
+            opacity: 1; /* Hover'da açıklama görünür */
+        }
+
+        /* Yeni animasyon sınıfı */
+        .form-submitted {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Giriş ve Kayıt Butonları için */
+        #kayitFormu button,
+        #girisFormu button {
+            background-color: #007bff; /* Mavi arka plan rengi */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* LED benzeri gölge efekti */
+        }
+
+        #kayitFormu button:hover,
+        #girisFormu button:hover {
+            background-color: #0056b3; /* Hover'da daha koyu mavi */
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7); /* Hover'da daha belirgin gölge */
+        }
+
+        /* Chat Asistanı Buton Renkleri */
+        .chat-toggle-button {
+            background-color: #007bff; /* Mavi arka plan rengi */
+        }
+
+        .chat-toggle-button:hover {
+            background-color: #0056b3; /* Hover'da daha koyu mavi */
+        }
+
+        /* Yorumlar Bölümündeki Buton Renkleri */
+        #yorumlar button {
+            background-color: #007bff; /* Mavi arka plan rengi */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        #yorumlar button:hover {
+            background-color: #0056b3; /* Hover'da daha koyu mavi */
+        }
     </style>
 </head>
 <body>
     <header>
+        <img src="T.png" alt="Tasarımcı Ali Dayı Logo" style="max-width: 150px; height: auto;">
         <h1>Tasarımcı Ali Dayı</h1>
     </header>
     <nav>
@@ -288,15 +419,43 @@
         <a href="e.html">E-Ticaret</a>
     </nav>
 
+    <!-- Slider -->
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="yazılım yapılır.png" alt="Yazılım Yapılır Görseli">
+            </div>
+            <div class="slide">
+                <img src="12s.jpg" alt="Slide 2 Görseli">
+            </div>
+            <div class="slide">
+                <img src="1.webp" alt="Slide 3 Görseli">
+            </div>
+            <div class="slide">
+                <img src="p.JPG" alt="Slide 4 Görseli">
+            </div>
+        </div>
+        <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
+        <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
     <!-- Ana Sayfa -->
     <div class="container" id="anasayfa">
         <div class="section">
             <h2>Hoş Geldiniz! Tasarımcı Ali Dayı'ya</h2>
-            <p>Sizler için animasyonlu videolar, grafikler ve logolar yapıyoruz! Markanızı en iyi şekilde temsil etmek için güçlü, yaratıcı ve etkili çözümler sunuyoruz.</p>
+            <p>Yazılım çözümleri ve profesyonel web siteleri geliştiriyoruz! İşinizi dijitale taşıyan modern ve etkili çözümler sunuyoruz. Ayrıca, animasyonlu videolar, çerçeveler ve logolar yaparak markanızı en iyi şekilde temsil ediyoruz.</p>
         </div>
         <div class="section">
-            <img src="yazılım yapılır.png" alt="Ana Sayfa Fotoğrafı" class="main-photo">
+            <img src="yazılım yapılır.png" alt="Ana Sayfa Fotoğrafı" class="main-photo" style="max-width: 80%; height: auto;">
         </div>
+    </div>
+
+    <!-- Video Ekleme (Ana Sayfa'nın altında) -->
+    <div class="video-container">
+        <video width="100%" controls preload="metadata">
+            <source src="hertürlü yazılımlar yapır.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
     </div>
 
     <!-- Hizmetler -->
@@ -306,22 +465,27 @@
             <div class="service" onclick="openModal('yazilim')">
                 <img src="12s.jpg" alt="Yazılım Görseli">
                 <h3>Yazılım Yapılır</h3>
+                <p>Profesyonel yazılım çözümleri sunuyoruz. İhtiyacınıza özel yazılımlar geliştiriyoruz.</p>
             </div>
             <div class="service" onclick="openModal('web-tasarim')">
                 <img src="website-1.jpg" alt="Web Tasarım Görseli">
                 <h3>Web Site Tasarımı</h3>
+                <p>Modern ve responsive web siteleri tasarlıyoruz.</p>
             </div>
             <div class="service" onclick="openModal('logo-tasarim')">
                 <img src="1.png" alt="Logo Tasarım Görseli">
                 <h3>Logo Tasarımı</h3>
+                <p>Markanızı öne çıkaracak logo tasarımları.</p>
             </div>
             <div class="service" onclick="openModal('animasyon-video')">
                 <img src="slide-2.webp" alt="Animasyon Video Görseli">
                 <h3>Animasyonlu Video Yapımı</h3>
+                <p>Etkileyici animasyonlu videolar hazırlıyoruz.</p>
             </div>
             <div class="service" onclick="openModal('grafik-tasarim')">
                 <img src="1.webp" alt="Grafik Tasarım Görseli">
                 <h3>Grafik Tasarımı</h3>
+                <p>Yaratıcı grafik tasarımları ile markanızı güçlendirin.</p>
             </div>
         </div>
     </div>
@@ -329,7 +493,7 @@
     <!-- Hakkında -->
     <div class="container" id="hakkinda">
         <h2>Hakkında</h2>
-        <p>Tasarımcı Ali Dayı, yaratıcı çözümler sunarak markanızı en iyi şekilde temsil etmeyi amaçlar. Yılların deneyimi ve profesyonel ekibiyle, projelerinizi hayata geçiriyoruz.</p>
+        <p>Tasarımcı Ali Dayı olarak, yaratıcı ve yenilikçi çözümlerle markanızı en iyi şekilde temsil etmeyi hedefliyoruz. Yılların deneyimi ve profesyonel ekibimizle projelerinizi hayata geçirerek dijital dünyada güçlü bir varlık oluşturmanıza yardımcı oluyoruz. Bugüne kadar birçok kurumsal web sitesi, e-ticaret platformu, yazılım projeleri, logo tasarımı, animasyonlu video ve grafik çalışmaları gerçekleştirdik.</p>
     </div>
 
     <!-- İletişim -->
@@ -339,8 +503,41 @@
             <h3>İletişim Bilgileri</h3>
             <p style="text-align: center;">Telefon: +90 505 431 5002</p>
             <p style="text-align: center;"><a href="https://wa.me/5054315002" target="_blank">WhatsApp ile İletişime Geçin</a></p>
+            <form id="contactForm" onsubmit="return handleSubmit(event)">
+                <input type="text" placeholder="Adınız" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <input type="email" placeholder="E-posta" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <textarea placeholder="Mesajınız" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                <button type="submit" style="background-color: #003cff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Gönder</button>
+            </form>
+            <div id="submissionMessage" style="display:none; text-align:center; margin-top:10px;">Mesajınız gönderildi!</div>
         </div>
     </div>
+
+    <!-- Giriş ve Kayıt Olma Bölümü -->
+    <div class="container" id="girisKayit">
+        <h2>Giriş / Kayıt Ol</h2>
+        <div id="girisFormu" style="display: block;">
+            <h3>Giriş Yap</h3>
+            <form onsubmit="return handleLogin(event)">
+                <input type="email" placeholder="E-posta" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <input type="password" placeholder="Şifre" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <button type="submit" style="background-color: #003cff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Giriş Yap</button>
+            </form>
+            <p style="margin-top: 10px;">Hesabınız yok mu? <a href="#" onclick="toggleForms()">Kayıt Ol</a></p>
+        </div>
+
+        <div id="kayitFormu" style="display: none;">
+            <h3>Kayıt Ol</h3>
+            <form onsubmit="return handleRegister(event)">
+                <input type="text" placeholder="Adınız" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <input type="email" placeholder="E-posta" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <input type="password" placeholder="Şifre" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <button type="submit" style="background-color: #ff69b4; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Kayıt Ol</button>
+            </form>
+            <p style="margin-top: 10px;">Zaten hesabınız var mı? <a href="#" onclick="toggleForms()">Giriş Yap</a></p>
+        </div>
+    </div>
+
     <!-- Chat Asistan -->
     <button class="chat-toggle-button" onclick="toggleChat()">💬</button>
     <div class="chat-box" id="chatBox">
@@ -356,7 +553,52 @@
             <button onclick="sendMessage()">Gönder</button>
         </div>
     </div>
+
+    <!-- Yorumlar Bölümü -->
+    <div class="container" id="yorumlar">
+        <h2>Yorumlar</h2>
+        <div class="star-rating">
+            <input type="radio" name="rating" id="5-stars" value="5">
+            <label for="5-stars">★</label>
+            <input type="radio" name="rating" id="4-stars" value="4">
+            <label for="4-stars">★</label>
+            <input type="radio" name="rating" id="3-stars" value="3">
+            <label for="3-stars">★</label>
+            <input type="radio" name="rating" id="2-stars" value="2">
+            <label for="2-stars">★</label>
+            <input type="radio" name="rating" id="1-star" value="1">
+            <label for="1-star">★</label>
+        </div>
+        <textarea id="yorumInput" placeholder="Yorumunuzu yazın..." required></textarea>
+        <button onclick="submitComment()">Yorum Gönder</button>
+        <div id="yorumlarList" style="margin-top: 20px;"></div>
+    </div>
+
     <script>
+        // Slider İşlemleri
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide'); // Tüm slaytları seç
+        const totalSlides = slides.length; // Toplam slayt sayısını al
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none'; // Sadece aktif slaytı göster
+            });
+            currentSlide = index; // Aktif slaytı güncelle
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % totalSlides; // Sonraki slayt
+            showSlide(nextIndex);
+        }
+
+        function prevSlide() {
+            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides; // Önceki slayt
+            showSlide(prevIndex);
+        }
+
+        setInterval(nextSlide, 5000); // 5 saniyede bir slider otomatik geçiş
+
         // Yapay Zeka Asistanı İşlemleri
         function toggleChat() {
             const chatBox = document.getElementById('chatBox');
@@ -380,10 +622,97 @@
                 // Yapay Zeka Asistanı Cevabı
                 setTimeout(() => {
                     const responseElement = document.createElement('p');
-                    responseElement.textContent = 'Asistan: Mesajınızı aldım, en kısa sürede yanıtlayacağım!';
+                    responseElement.textContent = getResponse(message);
                     chatMessages.appendChild(responseElement);
                 }, 500);
             }
+        }
+
+        function getResponse(message) {
+            const lowerCaseMessage = message.toLowerCase();
+            if (lowerCaseMessage.includes("merhaba")) {
+                return "Merhaba! Size nasıl yardımcı olabilirim?";
+            } else if (lowerCaseMessage.includes("hizmetler")) {
+                return "Biz yazılım, web tasarımı, logo tasarımı ve daha fazlasını sunuyoruz.";
+            } else if (lowerCaseMessage.includes("nasılsın")) {
+                return "Ben bir yapay zeka asistanıyım, her zaman hazırım!";
+            } else if (lowerCaseMessage.includes("teşekkür ederim")) {
+                return "Rica ederim! Başka bir konuda yardımcı olabilir miyim?";
+            } else if (lowerCaseMessage.includes("fiyatlar")) {
+                return "Hizmetlerimizin fiyatları hakkında bilgi almak için lütfen web sitemizi ziyaret edin.";
+            } else if (lowerCaseMessage.includes("iletisim")) {
+                return "Bize telefon veya WhatsApp üzerinden ulaşabilirsiniz. İletişim bilgilerimiz sayfanın altında.";
+            } else if (lowerCaseMessage.includes("şerefsiz")) { 
+                return "Üzgünüm, bu tür kelimeler kullanmamanızı öneririm. Size nasıl yardımcı olabilirim?";
+            } else if (lowerCaseMessage.includes("proje")) {
+                return "Projeleriniz hakkında daha fazla bilgi verirseniz, size yardımcı olabilirim.";
+            } else if (lowerCaseMessage.includes("nasıl çalışıyorsun")) {
+                return "Ben bir yapay zeka modeliyim ve doğal dil işleme kullanarak sorularınıza yanıt veriyorum.";
+            } else {
+                return "Üzgünüm, bu konuda bir yanıtım yok. Başka bir şey sormak ister misiniz?";
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Formun varsayılan gönderimini engelle
+            const submissionMessage = document.getElementById('submissionMessage');
+            const contactForm = document.getElementById('contactForm');
+
+            // Formu gizle ve mesajı göster
+            contactForm.classList.add('form-submitted');
+            submissionMessage.style.display = 'block';
+
+            // Formu sıfırlama
+            setTimeout(() => {
+                contactForm.reset();
+                submissionMessage.style.display = 'none';
+                contactForm.classList.remove('form-submitted');
+            }, 2000); // 2 saniye sonra formu sıfırla
+        }
+
+        function submitComment() {
+            const yorumInput = document.getElementById('yorumInput');
+            const yorumlarList = document.getElementById('yorumlarList');
+            const rating = document.querySelector('input[name="rating"]:checked');
+
+            if (yorumInput.value.trim() !== '' && rating) {
+                const yorumDiv = document.createElement('div');
+                yorumDiv.style.border = "1px solid #ddd"; // Yorum kutusuna kenarlık ekle
+                yorumDiv.style.padding = "10px"; // Yorum kutusuna iç boşluk ekle
+                yorumDiv.style.marginTop = "10px"; // Yorum kutuları arasında boşluk bırak
+                yorumDiv.innerHTML = `<strong>Yıldız: ${rating.value}</strong><p>${yorumInput.value}</p>`;
+                yorumlarList.appendChild(yorumDiv);
+                yorumInput.value = ''; // Yorum kutusunu temizle
+                rating.checked = false; // Yıldızları sıfırla
+            } else {
+                alert("Lütfen bir yorum yazın ve yıldız seçin.");
+            }
+        }
+
+        function toggleForms() {
+            const girisFormu = document.getElementById('girisFormu');
+            const kayitFormu = document.getElementById('kayitFormu');
+            if (girisFormu.style.display === 'block') {
+                girisFormu.style.display = 'none';
+                kayitFormu.style.display = 'block';
+            } else {
+                girisFormu.style.display = 'block';
+                kayitFormu.style.display = 'none';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            // Giriş işlemleri burada yapılacak
+            alert("Giriş yapıldı!"); // Burada gerçek giriş işlemi yapılmalı
+            return false; // Formun gönderilmesini engelle
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            // Kayıt işlemleri burada yapılacak
+            alert("Kayıt olundu!"); // Burada gerçek kayıt işlemi yapılmalı
+            return false; // Formun gönderilmesini engelle
         }
     </script>
 </body>
