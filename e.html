@@ -243,11 +243,17 @@
             height: auto;
             opacity: 0.8;
         }
+        .handwriting {
+            font-family: 'Cursive', sans-serif; /* El yazısı fontu */
+            font-size: 18px; /* Yazı boyutu */
+            color: #fff; /* Yazı rengi */
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Etiçartet</h1>
+        <h1>E-Ticaret</h1>
+        <p class="handwriting">MERHABALAR GİRİŞ YAPMADAN ÜRÜNLERİ SATIN ALAMASINIZ.</p>
         <span class="cart-icon" onclick="toggleCart()">🛒</span>
         <span class="user-icon" onclick="toggleLogin()">👤</span>
     </header>
@@ -393,7 +399,7 @@
                 return;
             }
             const message = cart.map(item => `${item.name} (${item.code}) - ₺${item.price} x ${item.quantity}`).join(', ');
-            const whatsappLink = `https://wa.me/905555555555?text=Merhaba, şu ürünleri satın almak istiyorum: ${encodeURIComponent(message)}`;
+            const whatsappLink = `https://wa.me/905054315002?text=Merhaba, şu ürünleri satın almak istiyorum: ${encodeURIComponent(message)}`;
             window.open(whatsappLink, '_blank');
         }
 
