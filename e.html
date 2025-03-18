@@ -96,57 +96,12 @@
             font-weight: 300;
         }
 
-        .header-actions {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .action-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 20px;
-        }
-
-        .action-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
         .container {
             flex: 1;
             padding: 30px 20px;
             max-width: 1280px;
             margin: 0 auto;
             width: 100%;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
         }
 
         .categories {
@@ -299,431 +254,6 @@
             font-size: 1.2rem;
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            overflow: auto;
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
-        }
-
-        .modal.visible {
-            opacity: 1;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: var(--card-light);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .modal.visible .modal-content {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: #999;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-
-        /* Cart Modal */
-        .cart-list {
-            margin-bottom: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .cart-item:hover {
-            background: rgba(0, 0, 0, 0.08);
-            transform: translateX(5px);
-        }
-
-        .cart-item-details {
-            flex-grow: 1;
-            margin-right: 15px;
-        }
-
-        .cart-item-title {
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
-
-        .cart-item-code {
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        .cart-quantity {
-            display: flex;
-            align-items: center;
-            margin-top: 8px;
-        }
-
-        .quantity-btn {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.1);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .quantity-btn:hover {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .quantity-value {
-            margin: 0 8px;
-            width: 30px;
-            text-align: center;
-        }
-
-        .cart-item-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .remove-btn {
-            background: var(--gradient-secondary);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .remove-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
-        }
-
-        .cart-summary {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-        }
-
-        .cart-total {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .checkout-button {
-            width: 100%;
-            padding: 12px;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .checkout-button:hover:not(:disabled) {
-            background: var(--gradient-hover);
-        }
-
-        .checkout-button:disabled {
-            background: #999;
-            cursor: not-allowed;
-        }
-
-        .checkout-button i {
-            font-size: 1.2rem;
-        }
-
-        /* Form styles */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 15px;
-            font-size: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
-            background: rgba(255, 255, 255, 0.9);
-            transition: var(--transition);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(93, 92, 222, 0.2);
-        }
-
-        .form-button {
-            width: 100%;
-            padding: 12px;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 10px;
-        }
-
-        .form-button:hover {
-            background: var(--gradient-hover);
-        }
-
-        .form-footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .form-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gradient);
-            color: white;
-            padding: 15px 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(100px);
-        }
-
-        .notification.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .notification i {
-            font-size: 1.2rem;
-        }
-
-        /* Empty state */
-        .empty-state {
-            text-align: center;
-            padding: 30px;
-            color: #999;
-        }
-
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #ddd;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-light: #181818;
-                --text-light: #FFFFFF;
-                --card-light: #222222;
-            }
-            
-            .form-input {
-                background: rgba(0, 0, 0, 0.2);
-                color: white;
-                border-color: rgba(255, 255, 255, 0.1);
-            }
-            
-            .product-desc {
-                color: #aaa;
-            }
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 20px;
-            }
-            
-            .header-actions {
-                top: 15px;
-                right: 15px;
-            }
-            
-            .action-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 18px;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 15px;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .product-title {
-                font-size: 1rem;
-            }
-            
-            .product-price {
-                font-size: 1.1rem;
-            }
-            
-            .container {
-                padding: 20px 15px;
-            }
-            
-            .categories {
-                gap: 10px;
-            }
-            
-            .category {
-                padding: 8px 15px;
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Loading indicators */
-        .loading {
-            position: relative;
-        }
-
-        .loading:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        .loading:before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(93, 92, 222, 0.3);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s infinite linear;
-            z-index: 2;
-        }
-
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Footer */
         footer {
             background: var(--card-dark);
             padding: 40px 20px;
@@ -808,187 +338,27 @@
             color: #aaa;
             font-size: 0.9rem;
         }
-
-        /* Utilities */
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
     </style>
 </head>
 <body>
     <header>
-        <h1>E-Ticaret</h1>
-        <p class="header-text">Profesyonel web hizmetleri için doğru adres</p>
-        <div class="header-actions">
-            <div class="action-icon" onclick="toggleCart()" aria-label="Sepet">
-                <i class="ri-shopping-cart-2-line"></i>
-            </div>
-            <div class="action-icon" onclick="toggleLogin()" aria-label="Giriş">
-                <i class="ri-user-line"></i>
-            </div>
-        </div>
+        <h1>E-TİCARET</h1>
+        <p class="header-text">En iyi ürünler, en uygun fiyatlar</p>
     </header>
 
     <div class="container">
         <div class="categories">
-            <button class="category active" data-category="all">Tüm Hizmetler</button>
-            <button class="category" data-category="web">Web Tasarım</button>
-            <button class="category" data-category="software">Yazılım</button>
-            <button class="category" data-category="graphic">Grafik Tasarım</button>
-            <button class="category" data-category="animation">Animasyon</button>
+            <button class="category active" data-category="all">Tümü</button>
+            <button class="category" data-category="elektronik">Elektronik</button>
+            <button class="category" data-category="giyim">Giyim</button>
+            <button class="category" data-category="ev">Ev & Yaşam</button>
+            <button class="category" data-category="spor">Spor</button>
         </div>
 
-        <h2 class="section-title">Ürünlerimiz</h2>
-        <div id="products" class="products-grid"></div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3 class="footer-title">Hakkımızda</h3>
-                <p>Profesyonel web tasarım, yazılım ve grafik hizmetleri sunuyoruz. Yaratıcı çözümlerle işinizi büyütmenize yardımcı oluyoruz.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="ri-facebook-fill"></i></a>
-                    <a href="#" class="social-link"><i class="ri-twitter-fill"></i></a>
-                    <a href="#" class="social-link"><i class="ri-instagram-line"></i></a>
-                    <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-title">Hızlı Linkler</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Ana Sayfa</a></li>
-                    <li><a href="#">Hizmetler</a></li>
-                    <li><a href="#">Portfolyo</a></li>
-                    <li><a href="#">Hakkımızda</a></li>
-                    <li><a href="#">İletişim</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-title">İletişim</h3>
-                <ul class="footer-links">
-                    <li><i class="ri-map-pin-line"></i> İstanbul, Türkiye</li>
-                    <li><i class="ri-phone-line"></i> +90 505 431 5002</li>
-                    <li><i class="ri-mail-line"></i> info@example.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2023 E-Ticaret. Tüm hakları saklıdır.
-        </div>
-    </footer>
-
-    <!-- Sepet Modal -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Sepetiniz</h3>
-                <button class="close-modal" onclick="toggleCart()"><i class="ri-close-line"></i></button>
-            </div>
-            <div id="cartItems" class="cart-list">
-                <!-- Cart items will be added here -->
-            </div>
-            <div class="cart-summary">
-                <div class="cart-total" id="totalPrice">Toplam: ₺0</div>
-                <button class="checkout-button" id="checkoutButton" onclick="checkout()" disabled>
-                    <i class="ri-shopping-bag-line"></i> Satın Al
-                </button>
-            </div>
-            <div id="emptyCart" class="empty-state" style="display: none;">
-                <i class="ri-shopping-cart-line"></i>
-                <p>Sepetiniz boş</p>
-                <p>Ürünleri inceleyip sepete ekleyebilirsiniz.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Giriş Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Giriş Yap</h3>
-                <button class="close-modal" onclick="closeModal('loginModal')"><i class="ri-close-line"></i></button>
-            </div>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label class="form-label" for="loginEmail">E-posta</label>
-                    <input type="email" id="loginEmail" class="form-input" placeholder="E-posta adresiniz" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="loginPassword">Şifre</label>
-                    <input type="password" id="loginPassword" class="form-input" placeholder="Şifreniz" required>
-                </div>
-                <button type="submit" class="form-button">
-                    <i class="ri-login-circle-line"></i> Giriş Yap
-                </button>
-                <div class="form-footer">
-                    <p>Hesabınız yok mu? <a href="#" onclick="toggleRegister()">Kayıt Ol</a></p>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Kayıt Modal -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Kayıt Ol</h3>
-                <button class="close-modal" onclick="closeModal('registerModal')"><i class="ri-close-line"></i></button>
-            </div>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label class="form-label" for="registerName">Adınız</label>
-                    <input type="text" id="registerName" class="form-input" placeholder="Ad ve soyadınız" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="registerEmail">E-posta</label>
-                    <input type="email" id="registerEmail" class="form-input" placeholder="E-posta adresiniz" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="registerPassword">Şifre</label>
-                    <input type="password" id="registerPassword" class="form-input" placeholder="Şifreniz" required>
-                </div>
-                <button type="submit" class="form-button">
-                    <i class="ri-user-add-line"></i> Kayıt Ol
-                </button>
-                <div class="form-footer">
-                    <p>Zaten hesabınız var mı? <a href="#" onclick="toggleLogin()">Giriş Yap</a></p>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Bildirim -->
-    <div class="notification" id="notification">
-        <i class="ri-check-line"></i>
-        <span id="notificationText">Ürün sepete eklendi!</span>
+        <div class="products-grid" id="productsGrid"></div>
     </div>
 
     <script>
-        // Dark mode detection
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
-
-        // Variables
-        const cart = [];
-        let isLoggedIn = false;
-        let currentCategory = 'all';
-        
         // Product data with category and image generation
         const products = [
             { 
@@ -1159,9 +529,42 @@
             return canvas.toDataURL();
         }
 
+        // Generate product card
+        function generateProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product';
+            
+            card.innerHTML = `
+                <div class="product-img-container">
+                    <img src="${generatePlaceholderImage(product)}" alt="${product.name}" class="product-img">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-desc">${product.description}</p>
+                    <div class="product-bottom">
+                        <span class="product-price">${product.price.toFixed(2)} TL</span>
+                    </div>
+                    <p class="product-code">Ürün Kodu: ${product.code}</p>
+                    <button onclick="buyNow('${product.name}', ${product.price})" class="buy-button">
+                        <i class="ri-whatsapp-line"></i>
+                        Satın Al
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Buy now function
+        function buyNow(productName, productPrice) {
+            const message = `Merhaba, ${productName} ürününü (${productPrice} TL) satın almak istiyorum.`;
+            const whatsappLink = `https://wa.me/905054315002?text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+        }
+
         // Render products based on selected category
         function renderProducts(category = 'all') {
-            const productsContainer = document.getElementById('products');
+            const productsContainer = document.getElementById('productsGrid');
             productsContainer.innerHTML = '';
             
             const filteredProducts = category === 'all' 
@@ -1179,227 +582,10 @@
             }
             
             filteredProducts.forEach((product, index) => {
-                // Generate image for each product
-                const imageUrl = generatePlaceholderImage(product);
-                
-                // Create product card with animation delay
-                const productCard = document.createElement('div');
-                productCard.className = 'product fade-in';
+                const productCard = generateProductCard(product);
                 productCard.style.animationDelay = `${index * 0.1}s`;
-                
-                // Add badge if exists
-                const badgeHtml = product.badge 
-                    ? `<div class="product-badge">${product.badge}</div>` 
-                    : '';
-                
-                // Check if price is 0 to show custom message
-                const priceHtml = product.price === 0 
-                    ? '<span class="product-price">İletişime Geçin</span>'
-                    : `<span class="product-price">₺${product.price}</span>`;
-                
-                productCard.innerHTML = `
-                    ${badgeHtml}
-                    <div class="product-img-container">
-                        <img src="${imageUrl}" alt="${product.name}">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">${product.name}</h3>
-                        <p class="product-desc">${product.description}</p>
-                        <div class="product-bottom">
-                            ${priceHtml}
-                        </div>
-                        <p class="product-code">Ürün Kodu: ${product.code}</p>
-                        <button class="buy-button" onclick="addToCart('${product.name}', ${product.price}, '${product.code}')">
-                            <i class="ri-shopping-cart-add-line"></i> Sepete Ekle
-                        </button>
-                    </div>
-                `;
-                
                 productsContainer.appendChild(productCard);
             });
-        }
-
-        // Add product to cart
-        function addToCart(productName, productPrice, productCode) {
-            const existingProduct = cart.find(item => item.code === productCode);
-            if (existingProduct) {
-                existingProduct.quantity += 1;
-            } else {
-                cart.push({ 
-                    code: productCode, 
-                    name: productName, 
-                    price: productPrice, 
-                    quantity: 1 
-                });
-            }
-            updateCart();
-            showNotification(`${productName} sepete eklendi!`);
-        }
-
-        // Update cart display
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const totalPrice = document.getElementById('totalPrice');
-            const checkoutButton = document.getElementById('checkoutButton');
-            const emptyCart = document.getElementById('emptyCart');
-            
-            cartItems.innerHTML = '';
-            let total = 0;
-            
-            if (cart.length === 0) {
-                emptyCart.style.display = 'block';
-                cartItems.style.display = 'none';
-            } else {
-                emptyCart.style.display = 'none';
-                cartItems.style.display = 'block';
-                
-                cart.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <div class="cart-item-details">
-                            <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">₺${item.price}</div>
-                            <div class="cart-item-code">${item.code}</div>
-                            <div class="cart-quantity">
-                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
-                                <span class="quantity-value">${item.quantity}</span>
-                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
-                            </div>
-                        </div>
-                        <div class="cart-item-actions">
-                            <button class="remove-btn" onclick="removeFromCart(${index})">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </div>
-                    `;
-                    cartItems.appendChild(cartItem);
-                    total += item.price * item.quantity;
-                });
-            }
-            
-            totalPrice.textContent = `Toplam: ₺${total}`;
-            
-            // Satın alma butonunu giriş durumuna göre aktif/pasif yap
-            checkoutButton.disabled = !isLoggedIn || cart.length === 0;
-        }
-
-        // Update quantity of item in cart
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                removeFromCart(index);
-            } else {
-                updateCart();
-            }
-        }
-
-        // Remove item from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-            showNotification('Ürün sepetten çıkarıldı');
-        }
-
-        // Toggle cart modal
-        function toggleCart() {
-            const modal = document.getElementById('cartModal');
-            toggleModal(modal);
-            if (modal.classList.contains('visible')) {
-                updateCart();
-            }
-        }
-
-        // Toggle login modal
-        function toggleLogin() {
-            closeAllModals();
-            const modal = document.getElementById('loginModal');
-            toggleModal(modal);
-        }
-
-        // Toggle register modal
-        function toggleRegister() {
-            closeAllModals();
-            const modal = document.getElementById('registerModal');
-            toggleModal(modal);
-        }
-
-        // Toggle modal visibility
-        function toggleModal(modal) {
-            if (modal.classList.contains('visible')) {
-                modal.classList.remove('visible');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            } else {
-                modal.style.display = 'block';
-                setTimeout(() => {
-                    modal.classList.add('visible');
-                }, 10);
-            }
-        }
-
-        // Close specified modal
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('visible');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
-        }
-
-        // Close all modals
-        function closeAllModals() {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                modal.classList.remove('visible');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            });
-        }
-
-        // Checkout process
-        function checkout() {
-            if (!isLoggedIn) {
-                showNotification('Lütfen önce giriş yapın!', 'error');
-                toggleLogin();
-                return;
-            }
-            
-            if (cart.length === 0) {
-                showNotification('Sepetiniz boş!', 'error');
-                return;
-            }
-            
-            const message = cart.map(item => `${item.name} (${item.code}) - ₺${item.price} x ${item.quantity}`).join('\n');
-            const whatsappLink = `https://wa.me/905054315002?text=Merhaba, şu ürünleri satın almak istiyorum:\n\n${encodeURIComponent(message)}`;
-            
-            window.open(whatsappLink, '_blank');
-            showNotification('WhatsApp üzerinden iletişime geçiliyor...');
-        }
-
-        // Show notification
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notificationText');
-            
-            // Set icon based on notification type
-            const icon = notification.querySelector('i');
-            if (type === 'success') {
-                icon.className = 'ri-check-line';
-                notification.style.background = 'var(--gradient)';
-            } else if (type === 'error') {
-                icon.className = 'ri-error-warning-line';
-                notification.style.background = 'var(--gradient-secondary)';
-            }
-            
-            notificationText.textContent = message;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
         }
 
         // Category filter click handler
@@ -1414,78 +600,8 @@
                 button.classList.add('active');
                 
                 // Update current category and render products
-                currentCategory = button.dataset.category;
+                const currentCategory = button.dataset.category;
                 renderProducts(currentCategory);
-            });
-        });
-
-        // Handle login form submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const loginButton = this.querySelector('button[type="submit"]');
-            loginButton.innerHTML = '<i class="ri-loader-4-line"></i> Giriş Yapılıyor...';
-            loginButton.disabled = true;
-            
-            setTimeout(() => {
-                const email = document.getElementById('loginEmail').value;
-                const password = document.getElementById('loginPassword').value;
-                
-                if (email && password) {
-                    isLoggedIn = true;
-                    showNotification('Giriş başarılı! Hoş geldiniz.');
-                    closeAllModals();
-                    updateCart();
-                    
-                    // Reset form
-                    document.getElementById('loginForm').reset();
-                } else {
-                    showNotification('Lütfen tüm alanları doldurun!', 'error');
-                }
-                
-                loginButton.innerHTML = '<i class="ri-login-circle-line"></i> Giriş Yap';
-                loginButton.disabled = false;
-            }, 1000);
-        });
-
-        // Handle register form submission
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const registerButton = this.querySelector('button[type="submit"]');
-            registerButton.innerHTML = '<i class="ri-loader-4-line"></i> Kayıt Yapılıyor...';
-            registerButton.disabled = true;
-            
-            setTimeout(() => {
-                const name = document.getElementById('registerName').value;
-                const email = document.getElementById('registerEmail').value;
-                const password = document.getElementById('registerPassword').value;
-                
-                if (name && email && password) {
-                    showNotification('Kayıt başarılı! Lütfen giriş yapın.');
-                    toggleLogin();
-                    
-                    // Reset form
-                    document.getElementById('registerForm').reset();
-                } else {
-                    showNotification('Lütfen tüm alanları doldurun!', 'error');
-                }
-                
-                registerButton.innerHTML = '<i class="ri-user-add-line"></i> Kayıt Ol';
-                registerButton.disabled = false;
-            }, 1000);
-        });
-
-        // Close modal when clicking outside the modal content
-        window.addEventListener('click', function(e) {
-            const modals = document.querySelectorAll('.modal.visible');
-            modals.forEach(modal => {
-                if (e.target === modal) {
-                    modal.classList.remove('visible');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 300);
-                }
             });
         });
 
