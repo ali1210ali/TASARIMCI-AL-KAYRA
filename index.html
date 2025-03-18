@@ -5,690 +5,1645 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tasarımcı Ali Dayı, yazılım çözümleri ve profesyonel web siteleri geliştirir.">
     <title>Tasarımcı Ali Dayı</title>
+    <!-- Google Fonts ve CDN Bağlantıları -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Genel Stil */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 10px;
-            background-color: white;
-            color: black;
-            line-height: 1.6;
+        :root {
+            --primary-color: #5D5CDE;
+            --secondary-color: #ff69b4;
+            --accent-color: #00e5ff;
+            --dark-bg: #121212;
+            --light-bg: #ffffff;
+            --glow-color: rgba(93, 92, 222, 0.6);
         }
-
+        
+        .dark {
+            --bg-color: var(--dark-bg);
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --header-bg: #000000;
+            --input-bg: #2d2d2d;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color, var(--light-bg));
+            color: var(--text-color, #333);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* 3D Animation Elements */
+        .animated-3d-element {
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .animated-3d-element:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Modern Glowing Header */
         header {
-            background-color: black;
+            background-color: var(--header-bg, #000000);
             color: white;
             text-align: center;
             padding: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: headerPop 2s infinite alternate;
+            position: relative;
+            z-index: 10;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 5px 30px rgba(0, 229, 255, 0.3);
+            animation: headerGlow 5s infinite alternate;
         }
-
-        @keyframes headerPop {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        
+        @keyframes headerGlow {
+            0% { box-shadow: 0 5px 30px rgba(0, 229, 255, 0.3); }
+            50% { box-shadow: 0 5px 30px rgba(255, 105, 180, 0.5); }
+            100% { box-shadow: 0 5px 30px rgba(93, 92, 222, 0.7); }
         }
-
-        h1 {
-            font-size: 2.5rem;
-            animation: textPop 2s infinite alternate;
-        }
-
-        @keyframes textPop {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
+        
+        /* Futuristic Navigation */
         nav {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem;
             display: flex;
             justify-content: center;
-            background-color: white;
-            padding: 5px 0; /* Menü butonlarını küçültmek için padding azaltıldı */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            width: 100%;
         }
-
-        nav a {
-            color: black;
-            padding: 8px 15px; /* Menü butonlarını küçültmek için padding azaltıldı */
+        
+        .nav-link {
+            color: var(--text-color);
             text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
-            font-weight: bold;
-            font-size: 14px; /* Yazı boyutu küçültüldü */
-            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
-
-        nav a:hover {
-            background-color: rgb(255, 0, 0);
+        
+        .nav-link:hover {
+            background: var(--primary-color);
             color: white;
-            transform: translateY(-3px); /* Buton hover'da yukarı hareket */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
+        
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.3rem;
+                gap: 0.3rem;
+            }
 
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 10px;
-            max-width: 1200px;
-            margin: 0 auto;
+            .nav-link {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.8rem;
+            }
         }
-
-        .section {
-            flex: 1;
-            padding: 20px;
-            box-sizing: border-box;
-            animation: fadeIn 2s ease-in-out;
+        
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        /* Glowing Elements */
+        .glow-on-hover {
+            position: relative;
+            transition: all 0.3s ease;
         }
-
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+        
+        .glow-on-hover::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: blur(15px);
         }
-
+        
+        .glow-on-hover:hover::after {
+            opacity: 0.7;
+        }
+        
+        /* Cyberpunk Heading */
+        h1.cyber-title {
+            font-size: 3rem;
+            font-weight: 700;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 2s infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(93, 92, 222, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 105, 180, 0.8); }
+            100% { text-shadow: 0 0 30px rgba(0, 229, 255, 0.9); }
+        }
+        
+        .glitch-effect {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        /* Modern Cards */
         .service {
-            flex: 1 1 calc(25% - 20px);
-            box-sizing: border-box;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .service:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .service img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Genel Buton Stilleri */
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff; /* Mavi arka plan rengi */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* LED benzeri gölge efekti */
-        }
-
-        button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7); /* Hover'da daha belirgin gölge */
-            background-color: #0056b3; /* Hover'da daha koyu mavi */
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: rgba(255, 105, 180, 1);
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .chat-box {
-            position: fixed;
-            bottom: 50%;
-            right: 50%;
-            transform: translate(50%, 50%);
-            width: 300px;
-            max-height: 400px;
-            background-color: green;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
-            display: none;
-            flex-direction: column;
-            animation: slideIn 0.5s ease-out;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
         }
-
-        @keyframes slideIn {
-            from { transform: translate(50%, 60%); opacity: 0; }
-            to { transform: translate(50%, 50%); opacity: 1; }
-        }
-
-        .chat-toggle-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #007bff; /* Mavi arka plan rengi */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .chat-toggle-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            background-color: #0056b3; /* Hover'da daha koyu mavi */
-        }
-
-        .chat-header {
-            background-color: #ff69b4;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-        }
-
-        .chat-input {
-            display: flex;
-            border-top: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 0;
-        }
-
-        .chat-input button {
-            padding: 10px;
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .chat-input button:hover {
-            background-color: #ff1493;
-        }
-
-        .star-rating {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-            padding: 10px 0;
-        }
-
-        .star-rating input {
-            display: none;
-        }
-
-        .star-rating label {
-            font-size: 20px;
-            color: #ddd;
-            cursor: pointer;
-        }
-
-        .star-rating input:checked ~ label,
-        .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            color: #f5b301;
-        }
-
-        @media (max-width: 768px) {
-            nav a {
-                font-size: 12px; /* Mobilde daha küçük yazı boyutu */
-            }
-            .service {
-                flex: 1 1 calc(100% - 20px);
-                padding: 15px;
-            }
-        }
-
-        .contact-box {
-            margin-top: 40px;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .main-photo {
+        
+        .service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
         }
-
+        
+        .service:hover::before {
+            opacity: 0.15;
+        }
+        
+        .service:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .service img {
+            transition: all 0.5s ease;
+            filter: brightness(0.9);
+        }
+        
+        .service:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        /* Modern Buttons */
+        .neon-button {
+            position: relative;
+            display: inline-block;
+            padding: 12px 30px;
+            color: var(--accent-color);
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--accent-color);
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+        
+        .neon-button:hover {
+            color: #111;
+            text-shadow: none;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+        
+        .neon-button:hover::before {
+            width: 100%;
+        }
+        
+        /* Modern Slider */
         .slider {
             position: relative;
             width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
+            max-width: 1200px;
+            margin: 30px auto;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            height: 60vh;
+            max-height: 600px;
         }
-
+        
         .slides {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
-
+        
         .slide {
-            box-sizing: border-box;
+            min-width: 100%;
+            position: relative;
             overflow: hidden;
         }
-
+        
         .slide img {
             width: 100%;
-            height: auto;
-            border-radius: 12px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 8s ease;
         }
-
+        
+        .slide.active img {
+            transform: scale(1.1);
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 50px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .slide.active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .slide-content p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+        }
+        
         .slider-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
             border: none;
-            padding: 10px;
-            cursor: pointer;
+            color: white;
+            font-size: 24px;
             border-radius: 50%;
-            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
+        
+        .slider-button:hover {
+            background: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
         .prev {
-            left: 10px;
+            left: 20px;
         }
-
+        
         .next {
-            right: 10px;
+            right: 20px;
         }
-
-        /* Ek Efektler */
-        .service h3 {
-            transition: color 0.3s;
+        
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
         }
-
-        .service:hover h3 {
-            color: #ff69b4; /* Hover'da başlık rengi değişir */
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-
-        .service p {
-            opacity: 0;
-            transition: opacity 0.3s;
+        
+        .indicator.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
         }
-
-        .service:hover p {
-            opacity: 1; /* Hover'da açıklama görünür */
+        
+        /* Chat box styling */
+        .chat-box {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background: rgba(30, 30, 30, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            transform-origin: bottom right;
+            animation: chatBoxPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-
-        /* Yeni animasyon sınıfı */
-        .form-submitted {
-            animation: fadeOut 1s forwards;
+        
+        @keyframes chatBoxPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
+        
+        .chat-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
         }
-
-        /* Giriş ve Kayıt Butonları için */
-        #kayitFormu button,
-        #girisFormu button {
-            background-color: #007bff; /* Mavi arka plan rengi */
+        
+        .chat-close {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-close:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .chat-message {
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            animation: messagePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes messagePop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .bot-message {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .chat-input input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        
+        .chat-input button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            background: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* LED benzeri gölge efekti */
+            transition: all 0.3s ease;
         }
-
-        #kayitFormu button:hover,
-        #girisFormu button:hover {
-            background-color: #0056b3; /* Hover'da daha koyu mavi */
-            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7); /* Hover'da daha belirgin gölge */
+        
+        .chat-input button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
         }
-
-        /* Chat Asistanı Buton Renkleri */
+        
         .chat-toggle-button {
-            background-color: #007bff; /* Mavi arka plan rengi */
-        }
-
-        .chat-toggle-button:hover {
-            background-color: #0056b3; /* Hover'da daha koyu mavi */
-        }
-
-        /* Yorumlar Bölümündeki Buton Renkleri */
-        #yorumlar button {
-            background-color: #007bff; /* Mavi arka plan rengi */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
+            border-radius: 50%;
+            font-size: 24px;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(93, 92, 222, 0.5);
+            z-index: 100;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        #yorumlar button:hover {
-            background-color: #0056b3; /* Hover'da daha koyu mavi */
+        
+        .chat-toggle-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(93, 92, 222, 0.7);
+        }
+        
+        .chat-toggle-button .chat-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .chat-toggle-button:hover .chat-icon {
+            transform: scale(1.2);
+        }
+        
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Typing animation */
+        .typing {
+            display: flex;
+            align-items: center;
+            column-gap: 4px;
+        }
+        
+        .typing span {
+            height: 8px;
+            width: 8px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        
+        .typing span:nth-child(1) {
+            animation: pulseAnimation 1.5s infinite;
+        }
+        
+        .typing span:nth-child(2) {
+            animation: pulseAnimation 1.5s infinite 0.2s;
+        }
+        
+        .typing span:nth-child(3) {
+            animation: pulseAnimation 1.5s infinite 0.4s;
+        }
+        
+        @keyframes pulseAnimation {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        /* Floating button */
+        .floating-button {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.5);
+            z-index: 100;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.1) rotate(-10deg);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7);
+        }
+        
+        .scroll-top {
+            bottom: 30px;
+            right: 100px;
+        }
+        
+        .theme-toggle {
+            bottom: 30px;
+            left: 30px;
+        }
+        
+        /* Services section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        /* Contact form */
+        .contact-box {
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-box input,
+        .contact-box textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-box input:focus,
+        .contact-box textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(93, 92, 222, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .services {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            nav {
+                overflow-x: auto;
+                white-space: nowrap;
+                justify-content: flex-start;
+                padding: 10px;
+            }
+            
+            nav a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            
+            .slider {
+                height: 40vh;
+            }
+            
+            .chat-box {
+                width: 90%;
+                height: 70vh;
+                right: 5%;
+                bottom: 80px;
+            }
+            
+            h1.cyber-title {
+                font-size: 2.2rem;
+            }
+            
+            .floating-button.scroll-top {
+                right: 30px;
+                bottom: 100px;
+            }
+        }
+        
+        /* Star rating enhancements */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            font-size: 30px;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: var(--accent-color);
+            transform: scale(1.2);
+            text-shadow: 0 0 15px var(--accent-color);
         }
     </style>
 </head>
-<body>
-    <header>
-        <img src="T.png" alt="Tasarımcı Ali Dayı Logo" style="max-width: 150px; height: auto;">
-        <h1>Tasarımcı Ali Dayı</h1>
+<body class="dark">
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    <div class="gradient-overlay"></div>
+    
+    <header class="animated-3d-element">
+        <img src="T.png" alt="Tasarımcı Ali Dayı Logo" class="w-32 h-auto mx-auto mb-2 glow-on-hover">
+        <h1 class="cyber-title glitch-effect">Tasarımcı Ali Dayı</h1>
+        <p class="text-lg mt-2 text-gray-300">Dijital Dünyada Yaratıcı Çözümler</p>
     </header>
-    <nav>
-        <a href="#anasayfa">Ana Sayfa</a>
-        <a href="#hakkinda">Hakkımızda</a>
-        <a href="#hizmetler">Hizmetler</a>
-        <a href="#iletisim">İletişim</a>
-        <a href="e.html">E-Ticaret</a>
+    
+    <nav class="z-50">
+        <a href="#anasayfa" class="nav-link">Ana Sayfa</a>
+        <a href="#hakkinda" class="nav-link">Hakkımızda</a>
+        <a href="#hizmetler" class="nav-link">Hizmetler</a>
+        <a href="#iletisim" class="nav-link">İletişim</a>
+        <a href="e.html" class="nav-link">E-Ticaret</a>
     </nav>
 
-    <!-- Slider -->
-    <div class="slider">
+    <!-- Modern Slider -->
+    <div class="slider" id="main-slider">
         <div class="slides">
-            <div class="slide">
-                <img src="yazılım yapılır.png" alt="Yazılım Yapılır Görseli">
+            <div class="slide active">
+                <img src="website-1.jpg" alt="Yazılım Yapılır Görseli">
+                <div class="slide-content">
+                    <h2>Profesyonel Yazılım Çözümleri</h2>
+                    <p>İşletmeniz için özel geliştirilen yazılımlarla rekabet avantajı sağlayın</p>
+                </div>
             </div>
             <div class="slide">
                 <img src="12s.jpg" alt="Slide 2 Görseli">
+                <div class="slide-content">
+                    <h2>Modern Web Tasarımı</h2>
+                    <p>Etkileyici ve kullanıcı dostu web siteleriyle dijital varlığınızı güçlendirin</p>
+                </div>
             </div>
             <div class="slide">
-                <img src="1.webp" alt="Slide 3 Görseli">
+                <img src="p.JPG" alt="Slide 3 Görseli">
+                <div class="slide-content">
+                    <h2>Yaratıcı Grafik Tasarım</h2>
+                    <p>Markanızı öne çıkaracak özgün ve etkileyici görsel çözümler</p>
+                </div>
             </div>
             <div class="slide">
                 <img src="p.JPG" alt="Slide 4 Görseli">
+                <div class="slide-content">
+                    <h2>Dijital Pazarlama</h2>
+                    <p>Hedef kitlenize ulaşarak satışlarınızı artırın</p>
+                </div>
             </div>
         </div>
-        <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
-        <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
+        <button class="slider-button prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-button next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-indicators">
+            <div class="indicator active" data-index="0"></div>
+            <div class="indicator" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <div class="indicator" data-index="3"></div>
+        </div>
     </div>
 
     <!-- Ana Sayfa -->
-    <div class="container" id="anasayfa">
-        <div class="section">
-            <h2>Hoş Geldiniz! Tasarımcı Ali Dayı'ya</h2>
-            <p>Yazılım çözümleri ve profesyonel web siteleri geliştiriyoruz! İşinizi dijitale taşıyan modern ve etkili çözümler sunuyoruz. Ayrıca, animasyonlu videolar, çerçeveler ve logolar yaparak markanızı en iyi şekilde temsil ediyoruz.</p>
-        </div>
-        <div class="section">
-            <img src="yazılım yapılır.png" alt="Ana Sayfa Fotoğrafı" class="main-photo" style="max-width: 80%; height: auto;">
+    <div class="container mx-auto px-6 py-16" id="anasayfa">
+        <div class="flex flex-wrap items-center">
+            <div class="w-full lg:w-1/2 reveal">
+                <h2 class="text-4xl font-bold mb-6 cyber-title">Hoş Geldiniz!</h2>
+                <p class="text-xl mb-8">Tasarımcı Ali Dayı olarak, yazılım çözümleri ve profesyonel web siteleri geliştiriyoruz! İşinizi dijitale taşıyan modern ve etkili çözümler sunuyoruz. Ayrıca, animasyonlu videolar, çerçeveler ve logolar yaparak markanızı en iyi şekilde temsil ediyoruz.</p>
+                <a href="#iletisim" class="neon-button">İletişime Geçin <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+            <div class="w-full lg:w-1/2 reveal" data-delay="0.2">
+                <div class="animated-3d-element mt-8 lg:mt-0">
+                    <img src="website-1.jpg" alt="Ana Sayfa Fotoğrafı" class="w-full h-auto rounded-xl glow-on-hover">
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Video Ekleme (Ana Sayfa'nın altında) -->
-    <div class="video-container">
-        <video width="100%" controls preload="metadata">
-            <source src="hertürlü yazılımlar yapır.mp4" type="video/mp4">
-            Tarayıcınız video etiketini desteklemiyor.
-        </video>
+    <!-- Video Ekleme -->
+    <div class="container mx-auto px-6 py-8 reveal">
+        <div class="relative overflow-hidden rounded-xl shadow-2xl animated-3d-element">
+            <video width="100%" controls preload="metadata" poster="video-poster.jpg" class="w-full">
+                <source src="hertürlü yazılımlar yapır.mp4" type="video/mp4">
+                Tarayıcınız video etiketini desteklemiyor.
+            </video>
+        </div>
     </div>
 
     <!-- Hizmetler -->
-    <div class="container" id="hizmetler">
-        <h2>Hizmetlerimiz</h2>
+    <div class="container mx-auto px-6 py-16" id="hizmetler">
+        <h2 class="text-4xl font-bold mb-12 text-center cyber-title reveal">Hizmetlerimiz</h2>
         <div class="services">
-            <div class="service" onclick="openModal('yazilim')">
-                <img src="12s.jpg" alt="Yazılım Görseli">
-                <h3>Yazılım Yapılır</h3>
-                <p>Profesyonel yazılım çözümleri sunuyoruz. İhtiyacınıza özel yazılımlar geliştiriyoruz.</p>
+            <div class="service reveal" onclick="openModal('yazilim')" data-delay="0.1">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="12s.jpg" alt="Yazılım Görseli" class="w-full h-56 object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-60"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-white">Yazılım Çözümleri</h3>
+                    <p class="text-gray-300">Profesyonel yazılım çözümleri sunuyoruz. İhtiyacınıza özel yazılımlar geliştiriyoruz.</p>
+                    <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
+                </div>
             </div>
-            <div class="service" onclick="openModal('web-tasarim')">
-                <img src="website-1.jpg" alt="Web Tasarım Görseli">
-                <h3>Web Site Tasarımı</h3>
-                <p>Modern ve responsive web siteleri tasarlıyoruz.</p>
+            
+            <div class="service reveal" onclick="openModal('web-tasarim')" data-delay="0.2">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="website-1.jpg" alt="Web Tasarım Görseli" class="w-full h-56 object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-60"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-white">Web Site Tasarımı</h3>
+                    <p class="text-gray-300">Modern ve responsive web siteleri tasarlıyoruz.</p>
+                    <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
+                </div>
             </div>
-            <div class="service" onclick="openModal('logo-tasarim')">
-                <img src="1.png" alt="Logo Tasarım Görseli">
-                <h3>Logo Tasarımı</h3>
-                <p>Markanızı öne çıkaracak logo tasarımları.</p>
+            
+            <div class="service reveal" onclick="openModal('logo-tasarim')" data-delay="0.3">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="1.png" alt="Logo Tasarım Görseli" class="w-full h-56 object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-60"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-white">Logo Tasarımı</h3>
+                    <p class="text-gray-300">Markanızı öne çıkaracak logo tasarımları.</p>
+                    <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
+                </div>
             </div>
-            <div class="service" onclick="openModal('animasyon-video')">
-                <img src="slide-2.webp" alt="Animasyon Video Görseli">
-                <h3>Animasyonlu Video Yapımı</h3>
-                <p>Etkileyici animasyonlu videolar hazırlıyoruz.</p>
+            
+            <div class="service reveal" onclick="openModal('animasyon-video')" data-delay="0.4">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="slide-2.webp" alt="Animasyon Video Görseli" class="w-full h-56 object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-60"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-white">Animasyonlu Video</h3>
+                    <p class="text-gray-300">Etkileyici animasyonlu videolar hazırlıyoruz.</p>
+                    <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
+                </div>
             </div>
-            <div class="service" onclick="openModal('grafik-tasarim')">
-                <img src="1.webp" alt="Grafik Tasarım Görseli">
-                <h3>Grafik Tasarımı</h3>
-                <p>Yaratıcı grafik tasarımları ile markanızı güçlendirin.</p>
+            
+            <div class="service reveal" onclick="openModal('grafik-tasarim')" data-delay="0.5">
+                <div class="relative overflow-hidden rounded-t-xl">
+                    <img src="1.webp" alt="Grafik Tasarım Görseli" class="w-full h-56 object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-60"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-white">Grafik Tasarımı</h3>
+                    <p class="text-gray-300">Yaratıcı grafik tasarımları ile markanızı güçlendirin.</p>
+                    <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Hakkında -->
-    <div class="container" id="hakkinda">
-        <h2>Hakkında</h2>
-        <p>Tasarımcı Ali Dayı olarak, yaratıcı ve yenilikçi çözümlerle markanızı en iyi şekilde temsil etmeyi hedefliyoruz. Yılların deneyimi ve profesyonel ekibimizle projelerinizi hayata geçirerek dijital dünyada güçlü bir varlık oluşturmanıza yardımcı oluyoruz. Bugüne kadar birçok kurumsal web sitesi, e-ticaret platformu, yazılım projeleri, logo tasarımı, animasyonlu video ve grafik çalışmaları gerçekleştirdik.</p>
+    <div class="container mx-auto px-6 py-16 reveal" id="hakkinda">
+        <div class="bg-gradient-to-r from-gray-900 to-black p-8 rounded-2xl shadow-2xl border border-gray-800">
+            <h2 class="text-4xl font-bold mb-8 text-center cyber-title">Hakkımızda</h2>
+            <p class="text-xl leading-relaxed text-gray-300">
+                Tasarımcı Ali Dayı olarak, yaratıcı ve yenilikçi çözümlerle markanızı en iyi şekilde temsil etmeyi hedefliyoruz. Yılların deneyimi ve profesyonel ekibimizle projelerinizi hayata geçirerek dijital dünyada güçlü bir varlık oluşturmanıza yardımcı oluyoruz. 
+            </p>
+            <p class="text-xl leading-relaxed text-gray-300 mt-4">
+                Bugüne kadar birçok kurumsal web sitesi, e-ticaret platformu, yazılım projeleri, logo tasarımı, animasyonlu video ve grafik çalışmaları gerçekleştirdik.
+            </p>
+        </div>
     </div>
 
     <!-- İletişim -->
-    <div class="container" id="iletisim">
-        <h2>İletişim</h2>
-        <div class="contact-box">
-            <h3>İletişim Bilgileri</h3>
-            <p style="text-align: center;">Telefon: +90 505 431 5002</p>
-            <p style="text-align: center;"><a href="https://wa.me/5054315002" target="_blank">WhatsApp ile İletişime Geçin</a></p>
-            <form id="contactForm" onsubmit="return handleSubmit(event)">
-                <input type="text" placeholder="Adınız" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <input type="email" placeholder="E-posta" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                <textarea placeholder="Mesajınız" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
-                <button type="submit" style="background-color: #003cff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Gönder</button>
+    <div class="container mx-auto px-6 py-16 reveal" id="iletisim">
+        <h2 class="text-4xl font-bold mb-12 text-center cyber-title">İletişim</h2>
+        <div class="contact-box p-8">
+            <h3 class="text-2xl font-bold mb-6 text-center">İletişim Bilgileri</h3>
+            <p class="text-center text-xl mb-2">
+                <i class="fas fa-phone-alt mr-2 text-primary-color"></i> +90 505 431 5002
+            </p>
+            <p class="text-center text-xl mb-6">
+                <a href="https://wa.me/5054315002" target="_blank" class="flex items-center justify-center hover:text-green-400 transition-colors">
+                    <i class="fab fa-whatsapp mr-2 text-green-500"></i> WhatsApp ile İletişime Geçin
+                </a>
+            </p>
+            
+            <form id="contactForm" onsubmit="return handleSubmit(event)" class="mt-8">
+                <div class="mb-6">
+                    <label for="name" class="block text-sm font-medium mb-2">Adınız</label>
+                    <input type="text" id="name" placeholder="Adınız" required class="w-full">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="email" class="block text-sm font-medium mb-2">E-posta</label>
+                    <input type="email" id="email" placeholder="E-posta adresiniz" required class="w-full">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="message" class="block text-sm font-medium mb-2">Mesajınız</label>
+                    <textarea id="message" placeholder="Mesajınız" required rows="5" class="w-full"></textarea>
+                </div>
+                
+                <button type="submit" class="neon-button w-full">
+                    <i class="fas fa-paper-plane mr-2"></i> Gönder
+                </button>
             </form>
-            <div id="submissionMessage" style="display:none; text-align:center; margin-top:10px;">Mesajınız gönderildi!</div>
-        </div>
-    </div>
-
-    <!-- Chat Asistan -->
-    <button class="chat-toggle-button" onclick="toggleChat()">💬</button>
-    <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            Asistan
-            <span style="font-size: 20px; margin-left: 10px;">🤖</span>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <p>Merhaba! Size nasıl yardımcı olabilirim?</p>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Mesajınızı yazın...">
-            <button onclick="sendMessage()">Gönder</button>
+            
+            <div id="submissionMessage" class="hidden mt-6 p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg text-center">
+                <i class="fas fa-check-circle text-2xl text-green-500"></i>
+                <p class="mt-2 text-white">Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.</p>
+            </div>
         </div>
     </div>
 
     <!-- Yorumlar Bölümü -->
-    <div class="container" id="yorumlar">
-        <h2>Yorumlar</h2>
-        <div class="star-rating">
-            <input type="radio" name="rating" id="5-stars" value="5">
-            <label for="5-stars">★</label>
-            <input type="radio" name="rating" id="4-stars" value="4">
-            <label for="4-stars">★</label>
-            <input type="radio" name="rating" id="3-stars" value="3">
-            <label for="3-stars">★</label>
-            <input type="radio" name="rating" id="2-stars" value="2">
-            <label for="2-stars">★</label>
-            <input type="radio" name="rating" id="1-star" value="1">
-            <label for="1-star">★</label>
+    <div class="container mx-auto px-6 py-16 reveal" id="yorumlar">
+        <h2 class="text-4xl font-bold mb-12 text-center cyber-title">Müşteri Yorumları</h2>
+        
+        <div class="bg-gradient-to-r from-gray-900 to-black p-8 rounded-2xl shadow-2xl border border-gray-800">
+            <div class="star-rating mb-8">
+                <input type="radio" name="rating" id="5-stars" value="5">
+                <label for="5-stars" class="text-3xl">★</label>
+                <input type="radio" name="rating" id="4-stars" value="4">
+                <label for="4-stars" class="text-3xl">★</label>
+                <input type="radio" name="rating" id="3-stars" value="3">
+                <label for="3-stars" class="text-3xl">★</label>
+                <input type="radio" name="rating" id="2-stars" value="2">
+                <label for="2-stars" class="text-3xl">★</label>
+                <input type="radio" name="rating" id="1-star" value="1">
+                <label for="1-star" class="text-3xl">★</label>
+            </div>
+            
+            <div class="mb-6">
+                <label for="yorumInput" class="block text-sm font-medium mb-2">Yorumunuz</label>
+                <textarea id="yorumInput" placeholder="Deneyiminizi paylaşın..." required rows="4" class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg p-4 text-white"></textarea>
+            </div>
+            
+            <button onclick="submitComment()" class="neon-button w-full">
+                <i class="fas fa-comment mr-2"></i> Yorum Gönder
+            </button>
+            
+            <div id="yorumlarList" class="mt-10 space-y-6">
+                <!-- Yorumlar burada gösterilecek -->
+            </div>
         </div>
-        <textarea id="yorumInput" placeholder="Yorumunuzu yazın..." required></textarea>
-        <button onclick="submitComment()">Yorum Gönder</button>
-        <div id="yorumlarList" style="margin-top: 20px;"></div>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">Tasarımcı Ali Dayı</h3>
+                    <p class="text-gray-400">Dijital dünyada yaratıcı çözümler sunuyoruz.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">Hızlı Bağlantılar</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#anasayfa" class="text-gray-400 hover:text-white transition-colors">Ana Sayfa</a></li>
+                        <li><a href="#hakkinda" class="text-gray-400 hover:text-white transition-colors">Hakkımızda</a></li>
+                        <li><a href="#hizmetler" class="text-gray-400 hover:text-white transition-colors">Hizmetler</a></li>
+                        <li><a href="#iletisim" class="text-gray-400 hover:text-white transition-colors">İletişim</a></li>
+                    </ul>
+                </div>
+                
+                <div class="w-full md:w-1/3">
+                    <h3 class="text-xl font-bold mb-4">İletişim</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-color"></i>
+                            <span class="text-gray-400">Türkiye</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary-color"></i>
+                            <span class="text-gray-400">+90 505 431 5002</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-color"></i>
+                            <span class="text-gray-400">info@example.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center">
+                <p class="text-gray-500"> 2023 Tasarımcı Ali Dayı. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Asistan -->
+    <button class="chat-toggle-button" onclick="toggleChat()">
+        <span class="chat-icon"><i class="fas fa-comments"></i></span>
+    </button>
+    
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            Asistan
+            <span class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot-message">
+                Merhaba! Size nasıl yardımcı olabilirim?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Mesajınızı yazın..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Float Buttons -->
+    <button class="floating-button scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <button class="floating-button theme-toggle" onclick="toggleTheme()">
+        <i id="themeIcon" class="fas fa-moon"></i>
+    </button>
+
+    <!-- Servis Detay Modal -->
+    <div id="serviceModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl bg-gray-900 rounded-2xl shadow-2xl border border-gray-800 p-6 z-10" id="modalContent">
+            <!-- Modal içeriği JavaScript ile doldurulacak -->
+        </div>
+    </div>
+
+    <!-- Particles.js ve diğer CDN scriptleri -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Slider İşlemleri
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide'); // Tüm slaytları seç
-        const totalSlides = slides.length; // Toplam slayt sayısını al
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.display = (i === index) ? 'block' : 'none'; // Sadece aktif slaytı göster
-            });
-            currentSlide = index; // Aktif slaytı güncelle
-        }
-
-        function nextSlide() {
-            const nextIndex = (currentSlide + 1) % totalSlides; // Sonraki slayt
-            showSlide(nextIndex);
-        }
-
-        function prevSlide() {
-            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides; // Önceki slayt
-            showSlide(prevIndex);
-        }
-
-        setInterval(nextSlide, 5000); // 5 saniyede bir slider otomatik geçiş
-
-        // Yapay Zeka Asistanı İşlemleri
-        function toggleChat() {
-            const chatBox = document.getElementById('chatBox');
-            if (chatBox.style.display === 'none' || chatBox.style.display === '') {
-                chatBox.style.display = 'flex';
+        // Tema Değiştirme
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
             } else {
-                chatBox.style.display = 'none';
+                body.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
             }
         }
-
+        
+        // Başlangıçta Karanlık Tema
+        document.body.classList.add('dark');
+        
+        // Particles.js Yapılandırması
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#5D5CDE", "#ff69b4", "#00e5ff"]
+                    },
+                    "shape": {
+                        "type": ["circle", "triangle", "polygon"],
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.3,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#5D5CDE",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+        
+        // Modern Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        function showSlide(index) {
+            // Aktif slaytı kaldır
+            document.querySelector('.slide.active').classList.remove('active');
+            document.querySelector('.indicator.active').classList.remove('active');
+            
+            // Yeni slaytı aktif et
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            
+            // Slayt geçişi
+            document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
+            
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+        
+        function prevSlide() {
+            const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
+        }
+        
+        // İndikatörlere tıklama olayları ekle
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Otomatik slider
+        setInterval(nextSlide, 5000);
+        
+        // Başlangıçta ilk slaytı göster
+        showSlide(0);
+        
+        // Scroll Reveal
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                const delay = element.dataset.delay || 0;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    setTimeout(() => {
+                        element.classList.add('active');
+                    }, delay * 1000);
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Chat Fonksiyonları
+        function toggleChat() {
+            const chatBox = document.getElementById('chatBox');
+            
+            if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+                chatBox.style.display = 'flex';
+                chatBox.style.animation = 'chatBoxPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+            } else {
+                chatBox.style.animation = 'chatBoxClose 0.3s forwards';
+                setTimeout(() => {
+                    chatBox.style.display = 'none';
+                }, 300);
+            }
+        }
+        
         function sendMessage() {
             const chatInput = document.getElementById('chatInput');
             const chatMessages = document.getElementById('chatMessages');
             const message = chatInput.value.trim();
+            
             if (message) {
-                const messageElement = document.createElement('p');
-                messageElement.textContent = `Siz: ${message}`;
-                chatMessages.appendChild(messageElement);
+                // Kullanıcı mesajını ekle
+                const userMessageEl = document.createElement('div');
+                userMessageEl.className = 'chat-message user-message';
+                userMessageEl.textContent = message;
+                chatMessages.appendChild(userMessageEl);
+                
+                // Input'u temizle
                 chatInput.value = '';
-
-                // Yapay Zeka Asistanı Cevabı
+                
+                // Otomatik kaydırma
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // "Yazıyor" göstergesi
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'chat-message bot-message typing';
+                typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+                chatMessages.appendChild(typingIndicator);
+                
+                // Otomatik kaydırma
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Bot yanıtı (gecikmeli)
                 setTimeout(() => {
-                    const responseElement = document.createElement('p');
-                    responseElement.textContent = getResponse(message);
-                    chatMessages.appendChild(responseElement);
-                }, 500);
+                    // "Yazıyor" göstergesini kaldır
+                    chatMessages.removeChild(typingIndicator);
+                    
+                    // Bot yanıtını ekle
+                    const botMessageEl = document.createElement('div');
+                    botMessageEl.className = 'chat-message bot-message';
+                    botMessageEl.textContent = getResponse(message);
+                    chatMessages.appendChild(botMessageEl);
+                    
+                    // Otomatik kaydırma
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1200);
             }
         }
-
+        
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
         function getResponse(message) {
             const lowerCaseMessage = message.toLowerCase();
-            if (lowerCaseMessage.includes("merhaba")) {
+            
+            if (lowerCaseMessage.includes("merhaba") || lowerCaseMessage.includes("selam")) {
                 return "Merhaba! Size nasıl yardımcı olabilirim?";
             } else if (lowerCaseMessage.includes("hizmetler")) {
-                return "Biz yazılım, web tasarımı, logo tasarımı ve daha fazlasını sunuyoruz.";
+                return "Biz yazılım, web tasarımı, logo tasarımı, animasyon ve grafik tasarım hizmetleri sunuyoruz. Hangi hizmet hakkında daha detaylı bilgi almak istersiniz?";
             } else if (lowerCaseMessage.includes("nasılsın")) {
-                return "Ben bir yapay zeka asistanıyım, her zaman hazırım!";
-            } else if (lowerCaseMessage.includes("teşekkür ederim")) {
+                return "Teşekkür ederim, ben her zaman yardıma hazırım! Size nasıl yardımcı olabilirim?";
+            } else if (lowerCaseMessage.includes("teşekkür")) {
                 return "Rica ederim! Başka bir konuda yardımcı olabilir miyim?";
-            } else if (lowerCaseMessage.includes("fiyatlar")) {
-                return "Hizmetlerimizin fiyatları hakkında bilgi almak için lütfen web sitemizi ziyaret edin.";
-            } else if (lowerCaseMessage.includes("iletisim")) {
-                return "Bize telefon veya WhatsApp üzerinden ulaşabilirsiniz. İletişim bilgilerimiz sayfanın altında.";
-            } else if (lowerCaseMessage.includes("şerefsiz")) { 
-                return "Üzgünüm, bu tür kelimeler kullanmamanızı öneririm. Size nasıl yardımcı olabilirim?";
-            } else if (lowerCaseMessage.includes("proje")) {
-                return "Projeleriniz hakkında daha fazla bilgi verirseniz, size yardımcı olabilirim.";
-            } else if (lowerCaseMessage.includes("nasıl çalışıyorsun")) {
-                return "Ben bir yapay zeka modeliyim ve doğal dil işleme kullanarak sorularınıza yanıt veriyorum.";
+            } else if (lowerCaseMessage.includes("fiyat")) {
+                return "Hizmetlerimizin fiyatları projenin kapsamına göre değişiklik göstermektedir. Detaylı bilgi için iletişim formunu doldurarak bize ulaşabilirsiniz. Size özel teklif hazırlayabiliriz.";
+            } else if (lowerCaseMessage.includes("iletisim") || lowerCaseMessage.includes("iletişim")) {
+                return "Bize +90 505 431 5002 numaralı telefondan veya WhatsApp üzerinden ulaşabilirsiniz. Ayrıca web sitemizdeki iletişim formunu da kullanabilirsiniz.";
+            } else if (lowerCaseMessage.includes("web site") || lowerCaseMessage.includes("website")) {
+                return "Web site tasarımı hizmetimizle, modern, mobil uyumlu ve kullanıcı dostu web siteleri geliştiriyoruz.";
+            } else if (lowerCaseMessage.includes("yazılım")) {
+                return "Yazılım geliştirme hizmetlerimiz arasında web uygulamaları, mobil uygulamalar, e-ticaret çözümleri ve özel yazılım projeleri bulunmaktadır. İhtiyacınıza özel çözümler sunuyoruz.";
             } else {
-                return "Üzgünüm, bu konuda bir yanıtım yok. Başka bir şey sormak ister misiniz?";
+                return "Üzgünüm, tam olarak anlayamadım. Hizmetlerimiz, fiyatlandırma veya iletişim hakkında bilgi almak isterseniz yardımcı olabilirim.";
             }
         }
-
+        
+        // Form Gönderimi
         function handleSubmit(event) {
-            event.preventDefault(); // Formun varsayılan gönderimini engelle
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
             const submissionMessage = document.getElementById('submissionMessage');
-            const contactForm = document.getElementById('contactForm');
-
-            // Formu gizle ve mesajı göster
-            contactForm.classList.add('form-submitted');
-            submissionMessage.style.display = 'block';
-
-            // Formu sıfırlama
+            
+            // Form doğrulama animasyonu
+            form.classList.add('sending');
+            
+            // Simüle edilmiş form gönderimi
             setTimeout(() => {
-                contactForm.reset();
-                submissionMessage.style.display = 'none';
-                contactForm.classList.remove('form-submitted');
-            }, 2000); // 2 saniye sonra formu sıfırla
+                form.classList.remove('sending');
+                form.reset();
+                submissionMessage.classList.remove('hidden');
+                
+                // Mesajı gizle
+                setTimeout(() => {
+                    submissionMessage.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+            
+            return false;
         }
-
+        
+        // Yorum Gönderimi
         function submitComment() {
             const yorumInput = document.getElementById('yorumInput');
             const yorumlarList = document.getElementById('yorumlarList');
             const rating = document.querySelector('input[name="rating"]:checked');
-
+            
             if (yorumInput.value.trim() !== '' && rating) {
-                const yorumDiv = document.createElement('div');
-                yorumDiv.style.border = "1px solid #ddd"; // Yorum kutusuna kenarlık ekle
-                yorumDiv.style.padding = "10px"; // Yorum kutusuna iç boşluk ekle
-                yorumDiv.style.marginTop = "10px"; // Yorum kutuları arasında boşluk bırak
-                yorumDiv.innerHTML = `<strong>Yıldız: ${rating.value}</strong><p>${yorumInput.value}</p>`;
-                yorumlarList.appendChild(yorumDiv);
-                yorumInput.value = ''; // Yorum kutusunu temizle
-                rating.checked = false; // Yıldızları sıfırla
+                const newComment = document.createElement('div');
+                newComment.className = 'bg-gray-800 bg-opacity-50 rounded-lg p-6 border border-gray-700 animate-fade-in';
+                
+                // Yıldız gösterimi
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= rating.value) {
+                        stars += '<i class="fas fa-star text-yellow-400"></i>';
+                    } else {
+                        stars += '<i class="far fa-star text-gray-500"></i>';
+                    }
+                }
+                
+                // Rastgele bir isim oluştur
+                const names = ['Mehmet Y.', 'Ayşe K.', 'Ali R.', 'Fatma S.', 'Ahmet D.', 'Zeynep B.'];
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                
+                // Rastgele bir tarih oluştur (son 30 gün içinde)
+                const today = new Date();
+                const pastDate = new Date(today);
+                pastDate.setDate(today.getDate() - Math.floor(Math.random() * 30));
+                const formattedDate = pastDate.toLocaleDateString('tr-TR');
+                
+                newComment.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-bold text-white">${randomName}</div>
+                            <div class="text-gray-400 text-sm">${formattedDate}</div>
+                        </div>
+                        <div class="flex">${stars}</div>
+                    </div>
+                    <p class="mt-3 text-gray-300">${yorumInput.value}</p>
+                `;
+                
+                // Yorumu listenin başına ekle
+                if (yorumlarList.firstChild) {
+                    yorumlarList.insertBefore(newComment, yorumlarList.firstChild);
+                } else {
+                    yorumlarList.appendChild(newComment);
+                }
+                
+                // Formu temizle
+                yorumInput.value = '';
+                rating.checked = false;
             } else {
-                alert("Lütfen bir yorum yazın ve yıldız seçin.");
+                // Hata mesajı
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'bg-red-900 bg-opacity-50 text-white p-4 rounded-lg mt-4 animate-fade-in';
+                errorMsg.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Lütfen bir yorum yazın ve yıldız derecelendirmesi seçin.';
+                
+                // Hata mesajını ekle ve 3 saniye sonra kaldır
+                yorumlarList.prepend(errorMsg);
+                setTimeout(() => {
+                    errorMsg.classList.add('animate-fade-out');
+                    setTimeout(() => {
+                        yorumlarList.removeChild(errorMsg);
+                    }, 500);
+                }, 3000);
             }
         }
-
-        function toggleForms() {
-            const girisFormu = document.getElementById('girisFormu');
-            const kayitFormu = document.getElementById('kayitFormu');
-            if (girisFormu.style.display === 'block') {
-                girisFormu.style.display = 'none';
-                kayitFormu.style.display = 'block';
-            } else {
-                girisFormu.style.display = 'block';
-                kayitFormu.style.display = 'none';
+        
+        // Yukarı Kaydırma
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Detay Modalı
+        function openModal(serviceId) {
+            const modal = document.getElementById('serviceModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Servis bilgilerini hazırla
+            let content = '';
+            switch (serviceId) {
+                case 'yazilim':
+                    content = `
+                        <h2 class="text-3xl font-bold mb-6 cyber-title">Yazılım Çözümleri</h2>
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-1/2 pr-0 lg:pr-6 mb-6 lg:mb-0">
+                                <img src="12s.jpg" alt="Yazılım Görseli" class="w-full h-auto rounded-xl mb-6">
+                                <div class="flex flex-wrap gap-2 mt-4">
+                                    <span class="px-3 py-1 bg-blue-900 bg-opacity-50 rounded-full text-blue-300 text-sm">Web Uygulamaları</span>
+                                    <span class="px-3 py-1 bg-green-900 bg-opacity-50 rounded-full text-green-300 text-sm">Mobil Uygulamalar</span>
+                                    <span class="px-3 py-1 bg-purple-900 bg-opacity-50 rounded-full text-purple-300 text-sm">E-Ticaret Çözümleri</span>
+                                    <span class="px-3 py-1 bg-yellow-900 bg-opacity-50 rounded-full text-yellow-300 text-sm">Özel Yazılımlar</span>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-1/2">
+                                <p class="text-gray-300 mb-4">İşletmenize özel yazılım çözümleriyle verimliliğinizi artırın ve rekabet avantajı elde edin. İhtiyaçlarınıza uygun olarak geliştirilen özel yazılımlarımız, işinizi daha kolay yönetmenizi sağlar.</p>
+                                <div class="space-y-4 mt-6">
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">Web Uygulamaları</h4>
+                                            <p class="text-gray-400">Kullanıcı dostu, modern ve hızlı web uygulamaları geliştiriyoruz.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">Mobil Uygulamalar</h4>
+                                            <p class="text-gray-400">iOS ve Android platformlarında çalışan yerel mobil uygulamalar.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">E-Ticaret Çözümleri</h4>
+                                            <p class="text-gray-400">Online satışlarınızı artıracak e-ticaret platformları geliştiriyoruz.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">Özel Yazılımlar</h4>
+                                            <p class="text-gray-400">İhtiyaçlarınıza özel yazılım çözümleri sunuyoruz.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#iletisim" class="neon-button" onclick="closeModal()">İletişime Geçin</a>
+                        </div>
+                    `;
+                    break;
+                case 'web-tasarim':
+                    content = `
+                        <h2 class="text-3xl font-bold mb-6 cyber-title">Web Site Tasarımı</h2>
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-1/2 pr-0 lg:pr-6 mb-6 lg:mb-0">
+                                <img src="website-1.jpg" alt="Web Tasarım Görseli" class="w-full h-auto rounded-xl mb-6">
+                                <div class="flex flex-wrap gap-2 mt-4">
+                                    <span class="px-3 py-1 bg-blue-900 bg-opacity-50 rounded-full text-blue-300 text-sm">Responsive Tasarım</span>
+                                    <span class="px-3 py-1 bg-green-900 bg-opacity-50 rounded-full text-green-300 text-sm">SEO Uyumlu</span>
+                                    <span class="px-3 py-1 bg-purple-900 bg-opacity-50 rounded-full text-purple-300 text-sm">Modern Arayüz</span>
+                                    <span class="px-3 py-1 bg-yellow-900 bg-opacity-50 rounded-full text-yellow-300 text-sm">Hızlı Yükleme</span>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-1/2">
+                                <p class="text-gray-300 mb-4">Markanızı en iyi şekilde temsil eden, modern ve etkili web siteleri tasarlıyoruz. Mobil uyumlu, hızlı ve kullanıcı dostu web sitelerimiz, müşterilerinize mükemmel bir deneyim sunar.</p>
+                                <div class="space-y-4 mt-6">
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">Responsive Tasarım</h4>
+                                            <p class="text-gray-400">Tüm cihazlarda kusursuz görünüm için uyarlanabilir tasarım.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">SEO Uyumlu Kodlama</h4>
+                                            <p class="text-gray-400">Arama motorlarında üst sıralarda yer almanız için optimize edilmiş kodlama.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">Kullanıcı Dostu Arayüz</h4>
+                                            <p class="text-gray-400">Kolay navigasyon ve kullanım sağlayan modern arayüz tasarımı.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="text-primary-color text-xl mr-4"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white">İçerik Yönetim Sistemi</h4>
+                                            <p class="text-gray-400">İçeriklerinizi kolayca yönetebileceğiniz panel.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#iletisim" class="neon-button" onclick="closeModal()">İletişime Geçin</a>
+                        </div>
+                    `;
+                    break;
+                // Diğer hizmetler için benzer şekilde devam edebilirsiniz
+                default:
+                    content = `
+                        <h2 class="text-3xl font-bold mb-6 cyber-title">Hizmet Detayları</h2>
+                        <p class="text-gray-300 mb-6">Bu hizmet hakkında detaylı bilgi almak için lütfen bizimle iletişime geçin.</p>
+                        <div class="text-center">
+                            <a href="#iletisim" class="neon-button" onclick="closeModal()">İletişime Geçin</a>
+                        </div>
+                    `;
             }
+            
+            modalContent.innerHTML = content;
+            modal.classList.remove('hidden');
+            
+            // Modal animasyonu
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'translate(-50%, -40%)';
+            
+            setTimeout(() => {
+                modalContent.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'translate(-50%, -50%)';
+            }, 10);
         }
-
-        function handleLogin(event) {
-            event.preventDefault();
-            // Giriş işlemleri burada yapılacak
-            alert("Giriş yapıldı!"); // Burada gerçek giriş işlemi yapılmalı
-            return false; // Formun gönderilmesini engelle
+        
+        function closeModal() {
+            const modal = document.getElementById('serviceModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Kapanış animasyonu
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'translate(-50%, -40%)';
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalContent.style.transition = 'none';
+            }, 300);
         }
-
-        function handleRegister(event) {
-            event.preventDefault();
-            // Kayıt işlemleri burada yapılacak
-            alert("Kayıt olundu!"); // Burada gerçek kayıt işlemi yapılmalı
-            return false; // Formun gönderilmesini engelle
-        }
+        
+        // Örnek başlangıç yorumlarını ekle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Örnek yorumlar
+            const exampleComments = [
+                { name: 'Ahmet K.', date: '15.05.2023', rating: 5, text: 'Web sitesi tasarımı için Ali Dayı ile çalıştık ve sonuçtan çok memnunuz. Profesyonel yaklaşımı ve hızlı iletişimi için teşekkürler!' },
+                { name: 'Zeynep B.', date: '23.04.2023', rating: 4, text: 'Logo tasarımımızı yaptırdık, çok beğendik. Yaratıcı çözümler sunuyorlar ve isteklerimizi tam olarak anladılar.' },
+                { name: 'Mehmet Y.', date: '10.03.2023', rating: 5, text: 'E-ticaret sitemizin yazılımını gerçekleştirdiler. Hem kullanımı kolay hem de hızlı çalışan bir site oldu. Müşterilerimizden de olumlu geri dönüşler alıyoruz.' }
+            ];
+            
+            const yorumlarList = document.getElementById('yorumlarList');
+            
+            exampleComments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'bg-gray-800 bg-opacity-50 rounded-lg p-6 border border-gray-700';
+                
+                // Yıldız gösterimi
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= comment.rating) {
+                        stars += '<i class="fas fa-star text-yellow-400"></i>';
+                    } else {
+                        stars += '<i class="far fa-star text-gray-500"></i>';
+                    }
+                }
+                
+                commentElement.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-bold text-white">${comment.name}</div>
+                            <div class="text-gray-400 text-sm">${comment.date}</div>
+                        </div>
+                        <div class="flex">${stars}</div>
+                    </div>
+                    <p class="mt-3 text-gray-300">${comment.text}</p>
+                `;
+                
+                yorumlarList.appendChild(commentElement);
+            });
+        });
     </script>
 </body>
 </html>
