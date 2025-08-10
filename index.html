@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tasarımcı Ali Dayı, yazılım çözümleri ve profesyonel web siteleri geliştirir.">
-    <title>Tasarımcı Ali Dayı</title>
+    <meta name="description" content="Yazılımcı Ali Dayı, yazılım çözümleri ve profesyonel web siteleri geliştirir.">
+    <title>Yazılımcı Ali Dayı</title>
     <!-- Google Fonts ve CDN Bağlantıları -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -19,7 +19,6 @@
             --light-bg: #ffffff;
             --glow-color: rgba(93, 92, 222, 0.6);
         }
-        
         .dark {
             --bg-color: var(--dark-bg);
             --text-color: #ffffff;
@@ -27,7 +26,6 @@
             --header-bg: #000000;
             --input-bg: #2d2d2d;
         }
-        
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -39,18 +37,15 @@
             position: relative;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
-        
         /* 3D Animation Elements */
         .animated-3d-element {
             transform-style: preserve-3d;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
         .animated-3d-element:hover {
             transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
-        
         /* Modern Glowing Header */
         header {
             background-color: var(--header-bg, #000000);
@@ -63,13 +58,11 @@
             box-shadow: 0 5px 30px rgba(0, 229, 255, 0.3);
             animation: headerGlow 5s infinite alternate;
         }
-        
         @keyframes headerGlow {
             0% { box-shadow: 0 5px 30px rgba(0, 229, 255, 0.3); }
             50% { box-shadow: 0 5px 30px rgba(255, 105, 180, 0.5); }
             100% { box-shadow: 0 5px 30px rgba(93, 92, 222, 0.7); }
         }
-        
         /* Futuristic Navigation */
         nav {
             position: sticky;
@@ -83,7 +76,6 @@
             gap: 0.5rem;
             width: 100%;
         }
-        
         .nav-link {
             color: var(--text-color);
             text-decoration: none;
@@ -93,25 +85,21 @@
             font-size: 0.9rem;
             white-space: nowrap;
         }
-        
         .nav-link:hover {
             background: var(--primary-color);
             color: white;
             transform: translateY(-2px);
         }
-        
         @media (max-width: 600px) {
             nav {
                 padding: 0.3rem;
                 gap: 0.3rem;
             }
-
             .nav-link {
                 padding: 0.3rem 0.7rem;
                 font-size: 0.8rem;
             }
         }
-        
         /* Particle Background */
         #particles-js {
             position: fixed;
@@ -121,13 +109,11 @@
             height: 100%;
             z-index: -1;
         }
-        
         /* Glowing Elements */
         .glow-on-hover {
             position: relative;
             transition: all 0.3s ease;
         }
-        
         .glow-on-hover::after {
             content: '';
             position: absolute;
@@ -142,11 +128,9 @@
             transition: opacity 0.3s ease;
             filter: blur(15px);
         }
-        
         .glow-on-hover:hover::after {
             opacity: 0.7;
         }
-        
         /* Cyberpunk Heading */
         h1.cyber-title {
             font-size: 3rem;
@@ -161,18 +145,15 @@
             color: transparent;
             animation: textGlow 2s infinite alternate;
         }
-        
         @keyframes textGlow {
             0% { text-shadow: 0 0 10px rgba(93, 92, 222, 0.7); }
             50% { text-shadow: 0 0 20px rgba(255, 105, 180, 0.8); }
             100% { text-shadow: 0 0 30px rgba(0, 229, 255, 0.9); }
         }
-        
         .glitch-effect {
             position: relative;
             animation: glitch 2s infinite;
         }
-        
         @keyframes glitch {
             0% { transform: translate(0); }
             20% { transform: translate(-2px, 2px); }
@@ -181,7 +162,6 @@
             80% { transform: translate(2px, -2px); }
             100% { transform: translate(0); }
         }
-        
         /* Modern Cards */
         .service {
             background: rgba(30, 30, 30, 0.7);
@@ -194,7 +174,6 @@
             position: relative;
             z-index: 1;
         }
-        
         .service::before {
             content: '';
             position: absolute;
@@ -207,26 +186,21 @@
             z-index: -1;
             transition: opacity 0.5s ease;
         }
-        
         .service:hover::before {
             opacity: 0.15;
         }
-        
         .service:hover {
             transform: translateY(-15px) scale(1.03);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
-        
         .service img {
             transition: all 0.5s ease;
             filter: brightness(0.9);
         }
-        
         .service:hover img {
             transform: scale(1.1);
             filter: brightness(1.1) contrast(1.1);
         }
-        
         /* Modern Buttons */
         .neon-button {
             position: relative;
@@ -243,7 +217,6 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
         .neon-button::before {
             content: '';
             position: absolute;
@@ -255,17 +228,14 @@
             z-index: -1;
             transition: width 0.3s ease;
         }
-        
         .neon-button:hover {
             color: #111;
             text-shadow: none;
             box-shadow: 0 0 15px var(--accent-color);
         }
-        
         .neon-button:hover::before {
             width: 100%;
         }
-        
         /* Modern Slider */
         .slider {
             position: relative;
@@ -278,30 +248,25 @@
             height: 60vh;
             max-height: 600px;
         }
-        
         .slides {
             display: flex;
             height: 100%;
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        
         .slide {
             min-width: 100%;
             position: relative;
             overflow: hidden;
         }
-        
         .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 8s ease;
         }
-        
         .slide.active img {
             transform: scale(1.1);
         }
-        
         .slide-content {
             position: absolute;
             bottom: 0;
@@ -313,25 +278,21 @@
             opacity: 0;
             transition: all 0.5s ease;
         }
-        
         .slide.active .slide-content {
             transform: translateY(0);
             opacity: 1;
         }
-        
         .slide-content h2 {
             font-size: 2.5rem;
             margin-bottom: 10px;
             color: white;
             text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
-        
         .slide-content p {
             font-size: 1.2rem;
             color: rgba(255,255,255,0.8);
             max-width: 600px;
         }
-        
         .slider-button {
             position: absolute;
             top: 50%;
@@ -350,20 +311,16 @@
             align-items: center;
             justify-content: center;
         }
-        
         .slider-button:hover {
             background: var(--primary-color);
             transform: translateY(-50%) scale(1.1);
         }
-        
         .prev {
             left: 20px;
         }
-        
         .next {
             right: 20px;
         }
-        
         .slider-indicators {
             position: absolute;
             bottom: 20px;
@@ -373,7 +330,6 @@
             gap: 10px;
             z-index: 10;
         }
-        
         .indicator {
             width: 12px;
             height: 12px;
@@ -382,12 +338,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
         .indicator.active {
             background: var(--accent-color);
             transform: scale(1.2);
         }
-        
         /* Chat box styling */
         .chat-box {
             position: fixed;
@@ -407,12 +361,10 @@
             transform-origin: bottom right;
             animation: chatBoxPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-        
         @keyframes chatBoxPop {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        
         .chat-header {
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -422,7 +374,6 @@
             font-size: 1.2rem;
             position: relative;
         }
-        
         .chat-close {
             position: absolute;
             right: 15px;
@@ -431,11 +382,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
         .chat-close:hover {
             transform: translateY(-50%) scale(1.2);
         }
-        
         .chat-messages {
             flex: 1;
             padding: 15px;
@@ -444,40 +393,34 @@
             flex-direction: column;
             gap: 10px;
         }
-        
         .chat-message {
             padding: 10px 15px;
             border-radius: 15px;
             max-width: 80%;
             animation: messagePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-        
         @keyframes messagePop {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        
         .user-message {
             align-self: flex-end;
             background: var(--primary-color);
             color: white;
             border-bottom-right-radius: 5px;
         }
-        
         .bot-message {
             align-self: flex-start;
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border-bottom-left-radius: 5px;
         }
-        
         .chat-input {
             display: flex;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 10px;
             background: rgba(0, 0, 0, 0.2);
         }
-        
         .chat-input input {
             flex: 1;
             padding: 12px 15px;
@@ -487,12 +430,10 @@
             color: white;
             font-size: 16px;
         }
-        
         .chat-input input:focus {
             outline: none;
             box-shadow: 0 0 0 2px var(--primary-color);
         }
-        
         .chat-input button {
             margin-left: 10px;
             padding: 8px 15px;
@@ -503,12 +444,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
         .chat-input button:hover {
             background: var(--secondary-color);
             transform: translateY(-2px);
         }
-        
         .chat-toggle-button {
             position: fixed;
             bottom: 30px;
@@ -528,39 +467,32 @@
             z-index: 100;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
         .chat-toggle-button:hover {
             transform: scale(1.1) rotate(10deg);
             box-shadow: 0 8px 25px rgba(93, 92, 222, 0.7);
         }
-        
         .chat-toggle-button .chat-icon {
             transition: all 0.3s ease;
         }
-        
         .chat-toggle-button:hover .chat-icon {
             transform: scale(1.2);
         }
-        
         /* Scroll animations */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
             transition: all 1s cubic-bezier(0.5, 0, 0, 1);
         }
-        
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
         /* Typing animation */
         .typing {
             display: flex;
             align-items: center;
             column-gap: 4px;
         }
-        
         .typing span {
             height: 8px;
             width: 8px;
@@ -568,19 +500,15 @@
             border-radius: 50%;
             opacity: 0.7;
         }
-        
         .typing span:nth-child(1) {
             animation: pulseAnimation 1.5s infinite;
         }
-        
         .typing span:nth-child(2) {
             animation: pulseAnimation 1.5s infinite 0.2s;
         }
-        
         .typing span:nth-child(3) {
             animation: pulseAnimation 1.5s infinite 0.4s;
         }
-        
         @keyframes pulseAnimation {
             0%, 100% {
                 transform: scale(1);
@@ -591,7 +519,6 @@
                 opacity: 1;
             }
         }
-        
         /* Floating button */
         .floating-button {
             position: fixed;
@@ -610,22 +537,18 @@
             z-index: 100;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
         .floating-button:hover {
             transform: scale(1.1) rotate(-10deg);
             box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7);
         }
-        
         .scroll-top {
             bottom: 30px;
             right: 100px;
         }
-        
         .theme-toggle {
             bottom: 30px;
             left: 30px;
         }
-        
         /* Services section */
         .services {
             display: grid;
@@ -633,7 +556,6 @@
             gap: 30px;
             padding: 20px;
         }
-        
         /* Contact form */
         .contact-box {
             background: rgba(30, 30, 30, 0.7);
@@ -644,7 +566,6 @@
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
         .contact-box input,
         .contact-box textarea {
             background: rgba(255, 255, 255, 0.1);
@@ -655,7 +576,6 @@
             font-size: 16px;
             transition: all 0.3s ease;
         }
-        
         .contact-box input:focus,
         .contact-box textarea:focus {
             outline: none;
@@ -663,46 +583,38 @@
             box-shadow: 0 0 0 2px rgba(93, 92, 222, 0.3);
             background: rgba(255, 255, 255, 0.15);
         }
-        
         /* Responsive design adjustments */
         @media (max-width: 768px) {
             .services {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             }
-            
             nav {
                 overflow-x: auto;
                 white-space: nowrap;
                 justify-content: flex-start;
                 padding: 10px;
             }
-            
             nav a {
                 padding: 8px 12px;
                 font-size: 14px;
             }
-            
             .slider {
                 height: 40vh;
             }
-            
             .chat-box {
                 width: 90%;
                 height: 70vh;
                 right: 5%;
                 bottom: 80px;
             }
-            
             h1.cyber-title {
                 font-size: 2.2rem;
             }
-            
             .floating-button.scroll-top {
                 right: 30px;
                 bottom: 100px;
             }
         }
-        
         /* Star rating enhancements */
         .star-rating {
             display: flex;
@@ -710,18 +622,15 @@
             justify-content: center;
             padding: 20px 0;
         }
-        
         .star-rating input {
             display: none;
         }
-        
         .star-rating label {
             font-size: 30px;
             color: #444;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
         .star-rating label:hover,
         .star-rating label:hover ~ label,
         .star-rating input:checked ~ label {
@@ -735,21 +644,17 @@
     <!-- Particle Background -->
     <div id="particles-js"></div>
     <div class="gradient-overlay"></div>
-    
     <header class="animated-3d-element">
-        <img src="T.png" alt="Tasarımcı Ali Dayı Logo" class="w-32 h-auto mx-auto mb-2 glow-on-hover">
-        <h1 class="cyber-title glitch-effect">Tasarımcı Ali Dayı</h1>
+        <img src="T.png" alt="Yazılımcı Ali Dayı Logo" class="w-32 h-auto mx-auto mb-2 glow-on-hover">
+        <h1 class="cyber-title glitch-effect">Yazılımcı Ali Dayı</h1>
         <p class="text-lg mt-2 text-gray-300">Dijital Dünyada Yaratıcı Çözümler</p>
     </header>
-    
     <nav class="z-50">
         <a href="#anasayfa" class="nav-link">Ana Sayfa</a>
         <a href="#hakkinda" class="nav-link">Hakkımızda</a>
         <a href="#hizmetler" class="nav-link">Hizmetler</a>
         <a href="#iletisim" class="nav-link">İletişim</a>
-        <a href="e.html" class="nav-link">E-Ticaret</a>
     </nav>
-
     <!-- Modern Slider -->
     <div class="slider" id="main-slider">
         <div class="slides">
@@ -791,13 +696,12 @@
             <div class="indicator" data-index="3"></div>
         </div>
     </div>
-
     <!-- Ana Sayfa -->
     <div class="container mx-auto px-6 py-16" id="anasayfa">
         <div class="flex flex-wrap items-center">
             <div class="w-full lg:w-1/2 reveal">
                 <h2 class="text-4xl font-bold mb-6 cyber-title">Hoş Geldiniz!</h2>
-                <p class="text-xl mb-8">Tasarımcı Ali Dayı olarak, yazılım çözümleri ve profesyonel web siteleri geliştiriyoruz! İşinizi dijitale taşıyan modern ve etkili çözümler sunuyoruz. Ayrıca, animasyonlu videolar, çerçeveler ve logolar yaparak markanızı en iyi şekilde temsil ediyoruz.</p>
+                <p class="text-xl mb-8">Yazılımcı Ali Dayı olarak, yazılım çözümleri ve profesyonel web siteleri geliştiriyoruz! İşinizi dijitale taşıyan modern ve etkili çözümler sunuyoruz. Ayrıca, animasyonlu videolar, çerçeveler ve logolar yaparak markanızı en iyi şekilde temsil ediyoruz.</p>
                 <a href="#iletisim" class="neon-button">İletişime Geçin <i class="fas fa-arrow-right ml-2"></i></a>
             </div>
             <div class="w-full lg:w-1/2 reveal" data-delay="0.2">
@@ -807,17 +711,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Video Ekleme -->
-    <div class="container mx-auto px-6 py-8 reveal">
-        <div class="relative overflow-hidden rounded-xl shadow-2xl animated-3d-element">
-            <video width="100%" controls preload="metadata" poster="video-poster.jpg" class="w-full">
-                <source src="hertürlü yazılımlar yapır.mp4" type="video/mp4">
-                Tarayıcınız video etiketini desteklemiyor.
-            </video>
-        </div>
-    </div>
-
     <!-- Hizmetler -->
     <div class="container mx-auto px-6 py-16" id="hizmetler">
         <h2 class="text-4xl font-bold mb-12 text-center cyber-title reveal">Hizmetlerimiz</h2>
@@ -833,7 +726,6 @@
                     <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
                 </div>
             </div>
-            
             <div class="service reveal" onclick="openModal('web-tasarim')" data-delay="0.2">
                 <div class="relative overflow-hidden rounded-t-xl">
                     <img src="website-1.jpg" alt="Web Tasarım Görseli" class="w-full h-56 object-cover">
@@ -845,7 +737,6 @@
                     <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
                 </div>
             </div>
-            
             <div class="service reveal" onclick="openModal('logo-tasarim')" data-delay="0.3">
                 <div class="relative overflow-hidden rounded-t-xl">
                     <img src="1.png" alt="Logo Tasarım Görseli" class="w-full h-56 object-cover">
@@ -857,7 +748,6 @@
                     <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
                 </div>
             </div>
-            
             <div class="service reveal" onclick="openModal('animasyon-video')" data-delay="0.4">
                 <div class="relative overflow-hidden rounded-t-xl">
                     <img src="slide-2.webp" alt="Animasyon Video Görseli" class="w-full h-56 object-cover">
@@ -869,7 +759,6 @@
                     <button class="neon-button mt-4 text-sm">Detaylı Bilgi</button>
                 </div>
             </div>
-            
             <div class="service reveal" onclick="openModal('grafik-tasarim')" data-delay="0.5">
                 <div class="relative overflow-hidden rounded-t-xl">
                     <img src="1.webp" alt="Grafik Tasarım Görseli" class="w-full h-56 object-cover">
@@ -883,20 +772,18 @@
             </div>
         </div>
     </div>
-
     <!-- Hakkında -->
     <div class="container mx-auto px-6 py-16 reveal" id="hakkinda">
         <div class="bg-gradient-to-r from-gray-900 to-black p-8 rounded-2xl shadow-2xl border border-gray-800">
             <h2 class="text-4xl font-bold mb-8 text-center cyber-title">Hakkımızda</h2>
             <p class="text-xl leading-relaxed text-gray-300">
-                Tasarımcı Ali Dayı olarak, yaratıcı ve yenilikçi çözümlerle markanızı en iyi şekilde temsil etmeyi hedefliyoruz. Yılların deneyimi ve profesyonel ekibimizle projelerinizi hayata geçirerek dijital dünyada güçlü bir varlık oluşturmanıza yardımcı oluyoruz. 
+                Yazılımcı Ali Dayı olarak, yaratıcı ve yenilikçi çözümlerle markanızı en iyi şekilde temsil etmeyi hedefliyoruz. Yılların deneyimi ve profesyonel ekibimizle projelerinizi hayata geçirerek dijital dünyada güçlü bir varlık oluşturmanıza yardımcı oluyoruz. 
             </p>
             <p class="text-xl leading-relaxed text-gray-300 mt-4">
                 Bugüne kadar birçok kurumsal web sitesi, e-ticaret platformu, yazılım projeleri, logo tasarımı, animasyonlu video ve grafik çalışmaları gerçekleştirdik.
             </p>
         </div>
     </div>
-
     <!-- İletişim -->
     <div class="container mx-auto px-6 py-16 reveal" id="iletisim">
         <h2 class="text-4xl font-bold mb-12 text-center cyber-title">İletişim</h2>
@@ -910,39 +797,32 @@
                     <i class="fab fa-whatsapp mr-2 text-green-500"></i> WhatsApp ile İletişime Geçin
                 </a>
             </p>
-            
             <form id="contactForm" onsubmit="return handleSubmit(event)" class="mt-8">
                 <div class="mb-6">
                     <label for="name" class="block text-sm font-medium mb-2">Adınız</label>
                     <input type="text" id="name" placeholder="Adınız" required class="w-full">
                 </div>
-                
                 <div class="mb-6">
                     <label for="email" class="block text-sm font-medium mb-2">E-posta</label>
                     <input type="email" id="email" placeholder="E-posta adresiniz" required class="w-full">
                 </div>
-                
                 <div class="mb-6">
                     <label for="message" class="block text-sm font-medium mb-2">Mesajınız</label>
                     <textarea id="message" placeholder="Mesajınız" required rows="5" class="w-full"></textarea>
                 </div>
-                
                 <button type="submit" class="neon-button w-full">
                     <i class="fas fa-paper-plane mr-2"></i> Gönder
                 </button>
             </form>
-            
             <div id="submissionMessage" class="hidden mt-6 p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg text-center">
                 <i class="fas fa-check-circle text-2xl text-green-500"></i>
                 <p class="mt-2 text-white">Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.</p>
             </div>
         </div>
     </div>
-
     <!-- Yorumlar Bölümü -->
     <div class="container mx-auto px-6 py-16 reveal" id="yorumlar">
         <h2 class="text-4xl font-bold mb-12 text-center cyber-title">Müşteri Yorumları</h2>
-        
         <div class="bg-gradient-to-r from-gray-900 to-black p-8 rounded-2xl shadow-2xl border border-gray-800">
             <div class="star-rating mb-8">
                 <input type="radio" name="rating" id="5-stars" value="5">
@@ -956,28 +836,24 @@
                 <input type="radio" name="rating" id="1-star" value="1">
                 <label for="1-star" class="text-3xl">★</label>
             </div>
-            
             <div class="mb-6">
                 <label for="yorumInput" class="block text-sm font-medium mb-2">Yorumunuz</label>
                 <textarea id="yorumInput" placeholder="Deneyiminizi paylaşın..." required rows="4" class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg p-4 text-white"></textarea>
             </div>
-            
             <button onclick="submitComment()" class="neon-button w-full">
                 <i class="fas fa-comment mr-2"></i> Yorum Gönder
             </button>
-            
             <div id="yorumlarList" class="mt-10 space-y-6">
                 <!-- Yorumlar burada gösterilecek -->
             </div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer class="bg-black text-white py-12 mt-16">
         <div class="container mx-auto px-6">
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/3 mb-8 md:mb-0">
-                    <h3 class="text-xl font-bold mb-4">Tasarımcı Ali Dayı</h3>
+                    <h3 class="text-xl font-bold mb-4">Yazılımcı Ali Dayı</h3>
                     <p class="text-gray-400">Dijital dünyada yaratıcı çözümler sunuyoruz.</p>
                     <div class="mt-4 flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
@@ -994,7 +870,6 @@
                         </a>
                     </div>
                 </div>
-                
                 <div class="w-full md:w-1/3 mb-8 md:mb-0">
                     <h3 class="text-xl font-bold mb-4">Hızlı Bağlantılar</h3>
                     <ul class="space-y-2">
@@ -1004,7 +879,6 @@
                         <li><a href="#iletisim" class="text-gray-400 hover:text-white transition-colors">İletişim</a></li>
                     </ul>
                 </div>
-                
                 <div class="w-full md:w-1/3">
                     <h3 class="text-xl font-bold mb-4">İletişim</h3>
                     <ul class="space-y-2">
@@ -1023,18 +897,15 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="border-t border-gray-800 mt-10 pt-6 text-center">
-                <p class="text-gray-500"> 2023 Tasarımcı Ali Dayı. Tüm hakları saklıdır.</p>
+                <p class="text-gray-500"> 2023 Yazılımcı Ali Dayı. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
-
     <!-- Chat Asistan -->
     <button class="chat-toggle-button" onclick="toggleChat()">
         <span class="chat-icon"><i class="fas fa-comments"></i></span>
     </button>
-    
     <div class="chat-box" id="chatBox">
         <div class="chat-header">
             Asistan
@@ -1052,16 +923,13 @@
             </button>
         </div>
     </div>
-
     <!-- Float Buttons -->
     <button class="floating-button scroll-top" onclick="scrollToTop()">
         <i class="fas fa-arrow-up"></i>
     </button>
-    
     <button class="floating-button theme-toggle" onclick="toggleTheme()">
         <i id="themeIcon" class="fas fa-moon"></i>
     </button>
-
     <!-- Servis Detay Modal -->
     <div id="serviceModal" class="fixed inset-0 z-50 hidden">
         <div class="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -1069,7 +937,6 @@
             <!-- Modal içeriği JavaScript ile doldurulacak -->
         </div>
     </div>
-
     <!-- Particles.js ve diğer CDN scriptleri -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
@@ -1077,7 +944,6 @@
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('themeIcon');
-            
             if (body.classList.contains('dark')) {
                 body.classList.remove('dark');
                 themeIcon.classList.remove('fa-sun');
@@ -1088,10 +954,8 @@
                 themeIcon.classList.add('fa-sun');
             }
         }
-        
         // Başlangıçta Karanlık Tema
         document.body.classList.add('dark');
-        
         // Particles.js Yapılandırması
         document.addEventListener('DOMContentLoaded', function() {
             particlesJS('particles-js', {
@@ -1200,60 +1064,47 @@
                 "retina_detect": true
             });
         });
-        
         // Modern Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
-        
         function showSlide(index) {
             // Aktif slaytı kaldır
             document.querySelector('.slide.active').classList.remove('active');
             document.querySelector('.indicator.active').classList.remove('active');
-            
             // Yeni slaytı aktif et
             slides[index].classList.add('active');
             indicators[index].classList.add('active');
-            
             // Slayt geçişi
             document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
-            
             currentSlide = index;
         }
-        
         function nextSlide() {
             const nextIndex = (currentSlide + 1) % slides.length;
             showSlide(nextIndex);
         }
-        
         function prevSlide() {
             const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(prevIndex);
         }
-        
         // İndikatörlere tıklama olayları ekle
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 showSlide(index);
             });
         });
-        
         // Otomatik slider
         setInterval(nextSlide, 5000);
-        
         // Başlangıçta ilk slaytı göster
         showSlide(0);
-        
         // Scroll Reveal
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
             const windowHeight = window.innerHeight;
-            
             reveals.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
                 const delay = element.dataset.delay || 0;
-                
                 if (elementTop < windowHeight - elementVisible) {
                     setTimeout(() => {
                         element.classList.add('active');
@@ -1261,14 +1112,11 @@
                 }
             });
         }
-        
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
-        
         // Chat Fonksiyonları
         function toggleChat() {
             const chatBox = document.getElementById('chatBox');
-            
             if (chatBox.style.display === 'none' || chatBox.style.display === '') {
                 chatBox.style.display = 'flex';
                 chatBox.style.animation = 'chatBoxPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
@@ -1279,60 +1127,48 @@
                 }, 300);
             }
         }
-        
         function sendMessage() {
             const chatInput = document.getElementById('chatInput');
             const chatMessages = document.getElementById('chatMessages');
             const message = chatInput.value.trim();
-            
             if (message) {
                 // Kullanıcı mesajını ekle
                 const userMessageEl = document.createElement('div');
                 userMessageEl.className = 'chat-message user-message';
                 userMessageEl.textContent = message;
                 chatMessages.appendChild(userMessageEl);
-                
                 // Input'u temizle
                 chatInput.value = '';
-                
                 // Otomatik kaydırma
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-                
                 // "Yazıyor" göstergesi
                 const typingIndicator = document.createElement('div');
                 typingIndicator.className = 'chat-message bot-message typing';
                 typingIndicator.innerHTML = '<span></span><span></span><span></span>';
                 chatMessages.appendChild(typingIndicator);
-                
                 // Otomatik kaydırma
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-                
                 // Bot yanıtı (gecikmeli)
                 setTimeout(() => {
                     // "Yazıyor" göstergesini kaldır
                     chatMessages.removeChild(typingIndicator);
-                    
                     // Bot yanıtını ekle
                     const botMessageEl = document.createElement('div');
                     botMessageEl.className = 'chat-message bot-message';
                     botMessageEl.textContent = getResponse(message);
                     chatMessages.appendChild(botMessageEl);
-                    
                     // Otomatik kaydırma
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }, 1200);
             }
         }
-        
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
         }
-        
         function getResponse(message) {
             const lowerCaseMessage = message.toLowerCase();
-            
             if (lowerCaseMessage.includes("merhaba") || lowerCaseMessage.includes("selam")) {
                 return "Merhaba! Size nasıl yardımcı olabilirim?";
             } else if (lowerCaseMessage.includes("hizmetler")) {
@@ -1353,41 +1189,33 @@
                 return "Üzgünüm, tam olarak anlayamadım. Hizmetlerimiz, fiyatlandırma veya iletişim hakkında bilgi almak isterseniz yardımcı olabilirim.";
             }
         }
-        
         // Form Gönderimi
         function handleSubmit(event) {
             event.preventDefault();
             const form = document.getElementById('contactForm');
             const submissionMessage = document.getElementById('submissionMessage');
-            
             // Form doğrulama animasyonu
             form.classList.add('sending');
-            
             // Simüle edilmiş form gönderimi
             setTimeout(() => {
                 form.classList.remove('sending');
                 form.reset();
                 submissionMessage.classList.remove('hidden');
-                
                 // Mesajı gizle
                 setTimeout(() => {
                     submissionMessage.classList.add('hidden');
                 }, 5000);
             }, 1500);
-            
             return false;
         }
-        
         // Yorum Gönderimi
         function submitComment() {
             const yorumInput = document.getElementById('yorumInput');
             const yorumlarList = document.getElementById('yorumlarList');
             const rating = document.querySelector('input[name="rating"]:checked');
-            
             if (yorumInput.value.trim() !== '' && rating) {
                 const newComment = document.createElement('div');
                 newComment.className = 'bg-gray-800 bg-opacity-50 rounded-lg p-6 border border-gray-700 animate-fade-in';
-                
                 // Yıldız gösterimi
                 let stars = '';
                 for (let i = 1; i <= 5; i++) {
@@ -1397,17 +1225,14 @@
                         stars += '<i class="far fa-star text-gray-500"></i>';
                     }
                 }
-                
                 // Rastgele bir isim oluştur
                 const names = ['Mehmet Y.', 'Ayşe K.', 'Ali R.', 'Fatma S.', 'Ahmet D.', 'Zeynep B.'];
                 const randomName = names[Math.floor(Math.random() * names.length)];
-                
                 // Rastgele bir tarih oluştur (son 30 gün içinde)
                 const today = new Date();
                 const pastDate = new Date(today);
                 pastDate.setDate(today.getDate() - Math.floor(Math.random() * 30));
                 const formattedDate = pastDate.toLocaleDateString('tr-TR');
-                
                 newComment.innerHTML = `
                     <div class="flex justify-between items-start">
                         <div>
@@ -1418,14 +1243,12 @@
                     </div>
                     <p class="mt-3 text-gray-300">${yorumInput.value}</p>
                 `;
-                
                 // Yorumu listenin başına ekle
                 if (yorumlarList.firstChild) {
                     yorumlarList.insertBefore(newComment, yorumlarList.firstChild);
                 } else {
                     yorumlarList.appendChild(newComment);
                 }
-                
                 // Formu temizle
                 yorumInput.value = '';
                 rating.checked = false;
@@ -1434,7 +1257,6 @@
                 const errorMsg = document.createElement('div');
                 errorMsg.className = 'bg-red-900 bg-opacity-50 text-white p-4 rounded-lg mt-4 animate-fade-in';
                 errorMsg.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Lütfen bir yorum yazın ve yıldız derecelendirmesi seçin.';
-                
                 // Hata mesajını ekle ve 3 saniye sonra kaldır
                 yorumlarList.prepend(errorMsg);
                 setTimeout(() => {
@@ -1445,7 +1267,6 @@
                 }, 3000);
             }
         }
-        
         // Yukarı Kaydırma
         function scrollToTop() {
             window.scrollTo({
@@ -1453,12 +1274,10 @@
                 behavior: 'smooth'
             });
         }
-        
         // Detay Modalı
         function openModal(serviceId) {
             const modal = document.getElementById('serviceModal');
             const modalContent = document.getElementById('modalContent');
-            
             // Servis bilgilerini hazırla
             let content = '';
             switch (serviceId) {
@@ -1576,35 +1395,28 @@
                         </div>
                     `;
             }
-            
             modalContent.innerHTML = content;
             modal.classList.remove('hidden');
-            
             // Modal animasyonu
             modalContent.style.opacity = '0';
             modalContent.style.transform = 'translate(-50%, -40%)';
-            
             setTimeout(() => {
                 modalContent.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                 modalContent.style.opacity = '1';
                 modalContent.style.transform = 'translate(-50%, -50%)';
             }, 10);
         }
-        
         function closeModal() {
             const modal = document.getElementById('serviceModal');
             const modalContent = document.getElementById('modalContent');
-            
             // Kapanış animasyonu
             modalContent.style.opacity = '0';
             modalContent.style.transform = 'translate(-50%, -40%)';
-            
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modalContent.style.transition = 'none';
             }, 300);
         }
-        
         // Örnek başlangıç yorumlarını ekle
         document.addEventListener('DOMContentLoaded', function() {
             // Örnek yorumlar
@@ -1613,13 +1425,10 @@
                 { name: 'Zeynep B.', date: '23.04.2023', rating: 4, text: 'Logo tasarımımızı yaptırdık, çok beğendik. Yaratıcı çözümler sunuyorlar ve isteklerimizi tam olarak anladılar.' },
                 { name: 'Mehmet Y.', date: '10.03.2023', rating: 5, text: 'E-ticaret sitemizin yazılımını gerçekleştirdiler. Hem kullanımı kolay hem de hızlı çalışan bir site oldu. Müşterilerimizden de olumlu geri dönüşler alıyoruz.' }
             ];
-            
             const yorumlarList = document.getElementById('yorumlarList');
-            
             exampleComments.forEach(comment => {
                 const commentElement = document.createElement('div');
                 commentElement.className = 'bg-gray-800 bg-opacity-50 rounded-lg p-6 border border-gray-700';
-                
                 // Yıldız gösterimi
                 let stars = '';
                 for (let i = 1; i <= 5; i++) {
@@ -1629,7 +1438,6 @@
                         stars += '<i class="far fa-star text-gray-500"></i>';
                     }
                 }
-                
                 commentElement.innerHTML = `
                     <div class="flex justify-between items-start">
                         <div>
@@ -1640,7 +1448,6 @@
                     </div>
                     <p class="mt-3 text-gray-300">${comment.text}</p>
                 `;
-                
                 yorumlarList.appendChild(commentElement);
             });
         });
